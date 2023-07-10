@@ -1,0 +1,105 @@
+start: s
+accept: ac 
+reject: rj 
+blank: _
+
+
+s  0 -> last  y  >
+
+s  1 -> last  x  >
+
+s  x -> s  x  >
+
+s  y -> s  y  >
+
+s  < -> checkSecond  <  >
+
+checkSecond  1 -> ac  1  ^
+
+checkSecond  p -> goFrontNums  p  <
+
+goFrontNums  < -> goFrontNums  <  <
+
+goFrontNums  x -> goFrontNums  x  <
+
+goFrontNums  y -> goFrontNums  y  <
+
+goFrontNums  _ -> startCheck  _  >
+
+last  0 -> last  0  >
+
+last  1 -> last  1  >
+
+last  x -> last  x  >
+
+last  y -> last  y  >
+
+last  p -> last  p  >
+
+last  q -> last  q  >
+
+last  < -> last  <  >
+
+last  _ -> checkLast  _  <
+
+checkLast  1 -> goToFront  p  <
+
+checkLast  0 -> goToFront  q  <
+
+checkLast  p -> checkLast  p  <
+
+checkLast  q -> checkLast  q  <
+
+checkLast  < -> rj  <  ^
+
+goToFront  0 -> goToFront  0  <
+
+goToFront  1 -> goToFront  1  <
+
+goToFront  x -> goToFront  x  <
+
+goToFront  y -> goToFront  y  <
+
+goToFront  < -> goToFront  <  <
+
+goToFront  _ -> s  _  >
+
+startCheck  x -> findP  *  >
+
+findP  x -> findP  x  >
+
+findP  y -> findP  y  >
+
+findP  < -> findP  <  >
+
+findP  q -> rj  q  ^
+
+findP  * -> findP  *  >
+
+findP  p -> goToStar  *  <
+
+startCheck  y -> findQ  *  >
+
+findQ  x -> findQ  x  >
+
+findQ  y -> findQ  y  >
+
+findQ  < -> findQ  <  >
+
+findQ  * -> findQ  *  >
+
+findQ  p -> ac  p  ^
+
+findQ  q -> goToStar  *  <
+
+goToStar  * -> goToStar  *  <
+
+goToStar  < -> goToFirstStar  <  <
+
+goToFirstStar  x -> goToFirstStar  x  <
+
+goToFirstStar  y -> goToFirstStar  y  <
+
+goToFirstStar  * -> startCheck  *  >
+
+startCheck  < -> rj  <  ^

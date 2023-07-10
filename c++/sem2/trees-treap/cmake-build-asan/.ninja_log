@@ -1,0 +1,9 @@
+# ninja log v5
+3	1556	6703662461608511	CMakeFiles/trees_lib.dir/src/Treap.cpp.obj	258cfcc59d091785
+20025	24459	6703662690671632	lib/libgtest.a	d5f026474db5359c
+23	2678	6703662472702251	CMakeFiles/trees_lib.dir/src/RandomGenerator.cpp.obj	23f9f6eb8797547
+34	20020	6703662645926842	googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	8b401970b72e5578
+2682	2976	6703662475833267	libtrees_lib.a	36914dd5cec00dfe
+50	5666	6703662502703337	googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	a11fb2ae9be885f
+61	15867	6703662604610867	test/CMakeFiles/runUnitTests.dir/src/common/TreeTest.cpp.obj	3bfbee1c24bbb13e
+24460	24607	6703662692077998	lib/libgtest_main.a	87109455fd7f4e02

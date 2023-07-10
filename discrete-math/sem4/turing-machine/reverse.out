@@ -1,0 +1,72 @@
+start: s
+accept: ac
+reject: rc 
+blank: _
+
+
+s  1 -> go_empty  1  >
+
+s  0 -> go_empty  0  >
+
+go_empty  0 -> go_empty  0  >
+
+go_empty  1 -> go_empty  1  >
+
+go_empty  _ -> go_back  _  <
+
+go_back  1 -> go_last1  x  ^
+
+go_back  0 -> go_last0  y  ^
+
+
+go_front  0 -> go_front  0  <
+
+go_front  1 -> go_front  1  <
+
+go_front  x -> go_front  x  <
+
+go_front  y -> go_front  y  <
+
+go_front  _ -> find_next_var  _  >
+
+find_next_var  0 -> find_next_var  0  >
+
+find_next_var  1 -> find_next_var  1  >
+
+find_next_var  x -> back_var  x  <
+
+find_next_var  y -> back_var  y  <
+
+back_var  0 -> go_last0  y  >
+
+back_var  1 -> go_last1  x  >
+
+go_last0  0 -> go_last0  0  >
+
+go_last0  1 -> go_last0  1  >
+
+go_last1  0 -> go_last1  0  >
+
+go_last1  1 -> go_last1  1  >
+
+go_last0  x -> go_last0  x  >
+
+go_last0  y -> go_last0  y  >
+
+go_last1  x -> go_last1  x  >
+
+go_last1  y -> go_last1  y  >
+
+go_last0  _ -> go_front  0  <
+
+go_last1  _ -> go_front  1  <
+
+back_var  _ -> fill  _  >
+
+fill  x -> fill  _  >
+
+fill  y -> fill  _  >
+
+fill  0 -> ac  0  ^
+
+fill  1 -> ac  1  ^

@@ -1,0 +1,28 @@
+start: s
+accept: ac 
+reject: rj 
+blank: _
+
+s  ( -> find_close  _  >
+
+s  ) -> rj  )  ^
+
+s  x -> s  _  >
+
+s  _ -> ac  _  ^
+
+find_close  ( -> find_close  (  >
+
+find_close  ) -> go_front  x  <
+
+find_close  _ -> rj  _  ^
+
+find_close  x -> find_close  x  >
+
+go_front  ( -> go_front  (  <
+
+go_front  ) -> go_front  )  <
+
+go_front  x -> go_front  x  <
+
+go_front  _ -> s  _  >

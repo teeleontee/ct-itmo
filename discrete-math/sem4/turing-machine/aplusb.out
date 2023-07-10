@@ -1,0 +1,49 @@
+start: s  
+accept: ac
+reject: rj 
+blank: _
+
+s  0 -> s  0  >
+
+s  1 -> s  1  >
+
+s  + -> decrBack  +  <
+
+decrBack  1 -> goEnd  0  >
+
+decrBack  0 -> decrBack  1  <
+
+decrBack  _ -> ending  _  >
+
+ending  1 -> ending  _  >
+
+ending  + -> ac  _  >
+
+goEnd  + -> goEnd  +  >
+
+goEnd  1 -> goEnd  1  >
+
+goEnd  0 -> goEnd  0  >
+
+goEnd  _ -> incr  _  <
+
+incr  0 -> goFront  1  <
+
+incr  1 -> incr  0  <
+
+incr  + -> big  +  >
+
+big  0 -> bigEnd  1  >
+
+bigEnd  0 -> bigEnd  0  >
+
+bigEnd  _ -> goFront  0  <
+
+goFront  0 -> goFront  0  <
+
+goFront  1 -> goFront  1  <
+
+goFront  + -> goFront  +  <
+
+goFront  _ -> s  _  >
+

@@ -1,0 +1,99 @@
+start: s
+accept: ac 
+reject: rj
+blank: _
+
+s  _ -> ac  _  ^
+
+s  1 -> go_last  x  >
+
+s  0 -> go_last  y  >
+
+go_last  1 -> go_last  1  >
+
+go_last  0 -> go_last  0  >
+
+go_last  x -> go_last  x  >
+
+go_last  y -> go_last  y  >
+
+go_last  p -> go_last  p  >
+
+go_last  q -> go_last  q  >
+
+go_last  _ -> back_one  _  <
+
+back_one  0 -> go_start  q  <
+
+back_one  1 -> go_start  p  <
+
+back_one  p -> back_one  p  <
+
+back_one  q -> back_one  q  <
+
+back_one  x -> rj  x  ^
+
+back_one  y -> rj  y  ^
+
+go_start  1 -> go_start  1  <
+
+go_start  0 -> go_start  0  <
+
+go_start  p -> go_start  p  <
+
+go_start  q -> go_start  q  <
+
+go_start  x -> go_start  x  <
+
+go_start  y -> go_start  y  <
+
+go_start  _ -> find_next  _  >
+
+find_next  1 -> go_last  x  >
+
+find_next  0 -> go_last  y  >
+
+find_next  x -> find_next  x  >
+
+find_next  y -> find_next  y  >
+
+find_next  p -> start  p  <
+
+find_next  q -> start  q  <
+
+start  x -> start  x  <
+
+start  y -> start  y  <
+
+start  $ -> start  $  <
+
+start  _ -> valid  _  >
+
+valid  x -> findp  _  >
+
+valid  y -> findq  _  >
+
+findp  x -> findp  x  >
+
+findp  y -> findp  y  >
+
+findq  x -> findq  x  >
+
+findq  y -> findq  y  >
+
+
+findp  q -> rj  q  ^
+
+findq  p -> rj  p  ^
+
+findp  p -> start  $  <
+
+findq  q -> start  $  <
+
+findp  $ -> findp  $  >
+
+findq  $ -> findq  $  >
+
+valid  $ -> valid  _  >
+
+valid  _ -> ac  _  ^
