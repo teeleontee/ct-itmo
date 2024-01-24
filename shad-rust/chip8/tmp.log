@@ -1,0 +1,2980 @@
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test test_quirks ... FAILED
+
+failures:
+
+---- test_quirks stdout ----
+[chip8/src/managed_interpreter.rs:141] &duration = 1s
+Jump(Address(780)), pc: 514
+ClearScreen, pc: 782
+SetIndexRegister(Address(511)), pc: 784
+ReadMemory(Nibble(0)), pc: 786
+SkipIfNotEqual(Nibble(0), 1), pc: 788
+SkipIfNotEqual(Nibble(0), 2), pc: 792
+SkipIfNotEqual(Nibble(0), 3), pc: 796
+SetRegister(Nibble(13), 6), pc: 800
+SetRegister(Nibble(14), 2), pc: 802
+SetIndexRegister(Address(1689)), pc: 804
+Call(Address(668)), pc: 806
+ReadMemory(Nibble(12)), pc: 670
+Call(Address(770)), pc: 672
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(1), 0), pc: 674
+SetToRegister(Nibble(0), Nibble(1)), pc: 678
+Call(Address(770)), pc: 680
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(2), 0), pc: 682
+SetToRegister(Nibble(0), Nibble(2)), pc: 686
+Call(Address(770)), pc: 688
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(3), 0), pc: 690
+SetToRegister(Nibble(0), Nibble(3)), pc: 694
+Call(Address(770)), pc: 696
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(4), 0), pc: 698
+SetToRegister(Nibble(0), Nibble(4)), pc: 702
+Call(Address(770)), pc: 704
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(5), 0), pc: 706
+SetToRegister(Nibble(0), Nibble(5)), pc: 710
+Call(Address(770)), pc: 712
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(6), 0), pc: 714
+SetToRegister(Nibble(0), Nibble(6)), pc: 718
+Call(Address(770)), pc: 720
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(7), 0), pc: 722
+SetToRegister(Nibble(0), Nibble(7)), pc: 726
+Call(Address(770)), pc: 728
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(8), 0), pc: 730
+SetToRegister(Nibble(0), Nibble(8)), pc: 734
+Call(Address(770)), pc: 736
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(9), 0), pc: 738
+SetToRegister(Nibble(0), Nibble(9)), pc: 742
+Call(Address(770)), pc: 744
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(10), 0), pc: 746
+SetToRegister(Nibble(0), Nibble(10)), pc: 750
+Call(Address(770)), pc: 752
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(11), 0), pc: 754
+SetToRegister(Nibble(0), Nibble(11)), pc: 758
+Call(Address(770)), pc: 760
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(12), 0), pc: 762
+SetToRegister(Nibble(0), Nibble(12)), pc: 766
+Call(Address(770)), pc: 768
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 770
+SetRegister(Nibble(13), 16), pc: 808
+SetRegister(Nibble(14), 10), pc: 810
+SetIndexRegister(Address(1703)), pc: 812
+Call(Address(668)), pc: 814
+ReadMemory(Nibble(12)), pc: 670
+Call(Address(770)), pc: 672
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(1), 0), pc: 674
+SetToRegister(Nibble(0), Nibble(1)), pc: 678
+Call(Address(770)), pc: 680
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(2), 0), pc: 682
+SetToRegister(Nibble(0), Nibble(2)), pc: 686
+Call(Address(770)), pc: 688
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(3), 0), pc: 690
+SetToRegister(Nibble(0), Nibble(3)), pc: 694
+Call(Address(770)), pc: 696
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(4), 0), pc: 698
+SetToRegister(Nibble(0), Nibble(4)), pc: 702
+Call(Address(770)), pc: 704
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(5), 0), pc: 706
+SetToRegister(Nibble(0), Nibble(5)), pc: 710
+Call(Address(770)), pc: 712
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(6), 0), pc: 714
+SetToRegister(Nibble(0), Nibble(6)), pc: 718
+Call(Address(770)), pc: 720
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(7), 0), pc: 722
+SetToRegister(Nibble(0), Nibble(7)), pc: 726
+Call(Address(770)), pc: 728
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(8), 0), pc: 730
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 732
+SetRegister(Nibble(13), 16), pc: 816
+SetRegister(Nibble(14), 15), pc: 818
+SetIndexRegister(Address(1712)), pc: 820
+Call(Address(668)), pc: 822
+ReadMemory(Nibble(12)), pc: 670
+Call(Address(770)), pc: 672
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(1), 0), pc: 674
+SetToRegister(Nibble(0), Nibble(1)), pc: 678
+Call(Address(770)), pc: 680
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(2), 0), pc: 682
+SetToRegister(Nibble(0), Nibble(2)), pc: 686
+Call(Address(770)), pc: 688
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(3), 0), pc: 690
+SetToRegister(Nibble(0), Nibble(3)), pc: 694
+Call(Address(770)), pc: 696
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(4), 0), pc: 698
+SetToRegister(Nibble(0), Nibble(4)), pc: 702
+Call(Address(770)), pc: 704
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(5), 0), pc: 706
+SetToRegister(Nibble(0), Nibble(5)), pc: 710
+Call(Address(770)), pc: 712
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(6), 0), pc: 714
+SetToRegister(Nibble(0), Nibble(6)), pc: 718
+Call(Address(770)), pc: 720
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(7), 0), pc: 722
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 724
+SetRegister(Nibble(13), 16), pc: 824
+SetRegister(Nibble(14), 20), pc: 826
+SetIndexRegister(Address(1720)), pc: 828
+Call(Address(668)), pc: 830
+ReadMemory(Nibble(12)), pc: 670
+Call(Address(770)), pc: 672
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(1), 0), pc: 674
+SetToRegister(Nibble(0), Nibble(1)), pc: 678
+Call(Address(770)), pc: 680
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(2), 0), pc: 682
+SetToRegister(Nibble(0), Nibble(2)), pc: 686
+Call(Address(770)), pc: 688
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(3), 0), pc: 690
+SetToRegister(Nibble(0), Nibble(3)), pc: 694
+Call(Address(770)), pc: 696
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(4), 0), pc: 698
+SetToRegister(Nibble(0), Nibble(4)), pc: 702
+Call(Address(770)), pc: 704
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(5), 0), pc: 706
+SetToRegister(Nibble(0), Nibble(5)), pc: 710
+Call(Address(770)), pc: 712
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(6), 0), pc: 714
+SetToRegister(Nibble(0), Nibble(6)), pc: 718
+Call(Address(770)), pc: 720
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(7), 0), pc: 722
+SetToRegister(Nibble(0), Nibble(7)), pc: 726
+Call(Address(770)), pc: 728
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(8), 0), pc: 730
+SetToRegister(Nibble(0), Nibble(8)), pc: 734
+Call(Address(770)), pc: 736
+SetIndexRegister(Address(1517)), pc: 772
+IncrementIndexRegister(Nibble(0)), pc: 774
+Draw(Nibble(13), Nibble(14), Nibble(4)), pc: 776
+AddValue(Nibble(13), 4), pc: 778
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 780
+SkipIfNotEqual(Nibble(9), 0), pc: 738
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 740
+SetRegister(Nibble(10), 50), pc: 832
+SetRegister(Nibble(11), 27), pc: 834
+SetIndexRegister(Address(1813)), pc: 836
+Draw(Nibble(10), Nibble(11), Nibble(4)), pc: 838
+SetRegister(Nibble(10), 58), pc: 840
+SetIndexRegister(Address(1817)), pc: 842
+Draw(Nibble(10), Nibble(11), Nibble(4)), pc: 844
+SetRegister(Nibble(0), 166), pc: 846
+SetRegister(Nibble(1), 141), pc: 848
+SetRegister(Nibble(2), 2), pc: 850
+Jump(Address(528)), pc: 852
+SetRegister(Nibble(5), 0), pc: 530
+SetIndexRegister(Address(546)), pc: 532
+WriteMemory(Nibble(1)), pc: 534
+SetIndexRegister(Address(642)), pc: 536
+WriteMemory(Nibble(1)), pc: 538
+Jump(Address(546)), pc: 540
+SetIndexRegister(Address(1677)), pc: 548
+IncrementIndexRegister(Nibble(5)), pc: 550
+IncrementIndexRegister(Nibble(5)), pc: 552
+IncrementIndexRegister(Nibble(5)), pc: 554
+IncrementIndexRegister(Nibble(5)), pc: 556
+ReadMemory(Nibble(1)), pc: 558
+SetRegister(Nibble(3), 0), pc: 560
+SkipIfEqual(Nibble(4), 0), pc: 566
+Jump(Address(580)), pc: 568
+SetRegister(Nibble(4), 14), pc: 582
+SkipIfKeyDown(Nibble(4)), pc: 584
+Jump(Address(594)), pc: 586
+SetRegister(Nibble(4), 15), pc: 596
+SkipIfKeyDown(Nibble(4)), pc: 598
+Jump(Address(608)), pc: 600
+SetToRegister(Nibble(6), Nibble(5)), pc: 610
+SetRegister(Nibble(4), 10), pc: 612
+SkipIfKeyUp(Nibble(4)), pc: 614
+SetRegister(Nibble(4), 0), pc: 618
+AddValue(Nibble(2), 1), pc: 620
+AddValue(Nibble(4), 1), pc: 622
+SkipIfKeyDown(Nibble(4)), pc: 624
+SetToRegister(Nibble(6), Nibble(4)), pc: 628
+AddValue(Nibble(6), 255), pc: 630
+Jump(Address(640)), pc: 632
+Call(Address(514)), pc: 642
+SetRegister(Nibble(0), 0), pc: 516
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+SkipIfKeyUp(Nibble(0)), pc: 518
+Jump(Address(516)), pc: 520
+[chip8/src/managed_interpreter.rs:141] &duration = 5s
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 526
+SetIndexRegister(Address(1677)), pc: 644
+IncrementIndexRegister(Nibble(6)), pc: 646
+IncrementIndexRegister(Nibble(6)), pc: 648
+IncrementIndexRegister(Nibble(6)), pc: 650
+IncrementIndexRegister(Nibble(6)), pc: 652
+SetRegister(Nibble(4), 2), pc: 654
+IncrementIndexRegister(Nibble(4)), pc: 656
+ReadMemory(Nibble(1)), pc: 658
+SetRegister(Nibble(4), 16), pc: 660
+Or(Nibble(0), Nibble(4)), pc: 662
+SetIndexRegister(Address(666)), pc: 664
+WriteMemory(Nibble(1)), pc: 666
+Jump(Address(852)), pc: 668
+SetIndexRegister(Address(1496)), pc: 854
+SetRegister(Nibble(0), 1), pc: 856
+WriteMemory(Nibble(0)), pc: 858
+Jump(Address(874)), pc: 860
+Call(Address(514)), pc: 876
+SetRegister(Nibble(0), 0), pc: 516
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+Jump(Address(516)), pc: 528
+SkipIfKeyUp(Nibble(0)), pc: 518
+AddValue(Nibble(0), 1), pc: 522
+SkipIfNotEqual(Nibble(0), 16), pc: 524
+[chip8/src/interpreter.rs:290] "parsed" = "parsed"
+Return, pc: 526
+ClearScreen, pc: 878
+SetRegister(Nibble(1), 0), pc: 880
+SetRegister(Nibble(0), 8), pc: 882
+SetIndexRegister(Address(1821)), pc: 884
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 886
+SetRegister(Nibble(0), 16), pc: 888
+SetIndexRegister(Address(1836)), pc: 890
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 892
+SetRegister(Nibble(0), 24), pc: 894
+SetIndexRegister(Address(1851)), pc: 896
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 898
+SetRegister(Nibble(0), 32), pc: 900
+SetIndexRegister(Address(1866)), pc: 902
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 904
+SetRegister(Nibble(0), 40), pc: 906
+SetIndexRegister(Address(1881)), pc: 908
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 910
+SetRegister(Nibble(0), 48), pc: 912
+SetIndexRegister(Address(1896)), pc: 914
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 916
+SetRegister(Nibble(1), 15), pc: 918
+SetRegister(Nibble(0), 8), pc: 920
+SetIndexRegister(Address(1911)), pc: 922
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 924
+SetRegister(Nibble(0), 16), pc: 926
+SetIndexRegister(Address(1926)), pc: 928
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 930
+SetRegister(Nibble(0), 24), pc: 932
+SetIndexRegister(Address(1941)), pc: 934
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 936
+SetRegister(Nibble(0), 32), pc: 938
+SetIndexRegister(Address(1956)), pc: 940
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 942
+SetRegister(Nibble(0), 40), pc: 944
+SetIndexRegister(Address(1971)), pc: 946
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 948
+SetRegister(Nibble(0), 48), pc: 950
+SetIndexRegister(Address(1986)), pc: 952
+Draw(Nibble(0), Nibble(1), Nibble(15)), pc: 954
+SetIndexRegister(Address(1799)), pc: 956
+ReadMemory(Nibble(6)), pc: 958
+SetIndexRegister(Address(1806)), pc: 960
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+AddRegister(Nibble(2), Nibble(4)), pc: 988
+AddRegister(Nibble(3), Nibble(15)), pc: 990
+SkipIfEqual(Nibble(14), 0), pc: 994
+Jump(Address(962)), pc: 996
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+AddRegister(Nibble(2), Nibble(4)), pc: 988
+AddRegister(Nibble(3), Nibble(15)), pc: 990
+SkipIfEqual(Nibble(14), 0), pc: 994
+Jump(Address(962)), pc: 996
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+AddRegister(Nibble(2), Nibble(4)), pc: 988
+AddRegister(Nibble(3), Nibble(15)), pc: 990
+SkipIfEqual(Nibble(14), 0), pc: 994
+Jump(Address(962)), pc: 996
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+AddRegister(Nibble(2), Nibble(4)), pc: 988
+AddRegister(Nibble(3), Nibble(15)), pc: 990
+SkipIfEqual(Nibble(14), 0), pc: 994
+Jump(Address(962)), pc: 996
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+AddRegister(Nibble(2), Nibble(4)), pc: 988
+AddRegister(Nibble(3), Nibble(15)), pc: 990
+SkipIfEqual(Nibble(14), 0), pc: 994
+Jump(Address(962)), pc: 996
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+AddRegister(Nibble(2), Nibble(4)), pc: 988
+AddRegister(Nibble(3), Nibble(15)), pc: 990
+SkipIfEqual(Nibble(14), 0), pc: 994
+Jump(Address(962)), pc: 996
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+AddRegister(Nibble(2), Nibble(4)), pc: 988
+AddRegister(Nibble(3), Nibble(15)), pc: 990
+SkipIfEqual(Nibble(14), 0), pc: 994
+Jump(Address(962)), pc: 996
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+AddRegister(Nibble(2), Nibble(4)), pc: 988
+AddRegister(Nibble(3), Nibble(15)), pc: 990
+SkipIfEqual(Nibble(14), 0), pc: 994
+Jump(Address(962)), pc: 996
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+AddRegister(Nibble(2), Nibble(4)), pc: 988
+AddRegister(Nibble(3), Nibble(15)), pc: 990
+SkipIfEqual(Nibble(14), 0), pc: 994
+Jump(Address(962)), pc: 996
+SetRegister(Nibble(5), 30), pc: 964
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+SetRegister(Nibble(0), 54), pc: 972
+ShiftRight(Nibble(6), Nibble(6)), pc: 976
+ShiftRight(Nibble(6), Nibble(6)), pc: 978
+SubRegister(Nibble(0), Nibble(6)), pc: 980
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+Jump(Address(980)), pc: 970
+AddValue(Nibble(5), 255), pc: 982
+SkipIfEqual(Nibble(5), 0), pc: 984
+Jump(Address(964)), pc: 986
+Draw(Nibble(0), Nibble(1), Nibble(1)), pc: 966
+SkipIfEqual(Nibble(15), 0), pc: 968
+thread 'test_quirks' panicked at 'Wrong display content. Expected:
+
+................................................................
+.#.#.###.....##..###..##.###.###............###.##..............
+.#.#.#.......#.#.##..##..##...#.............#.#.#.#........#.#..
+.#.#.##......##..#.....#.#....#.............#.#.#.#........##...
+..#..#.......#.#.###.##..###..#.............###.#.#........#....
+................................................................
+.###.###.###.###.##..#.#....................###.##..............
+.###.##..###.#.#.#.#.#.#....................#.#.#.#........#.#..
+.#.#.#...#.#.#.#.##...#.....................#.#.#.#........##...
+.#.#.###.#.#.###.#.#..#.....................###.#.#........#....
+................................................................
+.##..###..##.##......#.#..#..###.###........###.##..............
+.#.#..#..##..#.#.....#.#.#.#..#...#.........#.#.#.#........#.#..
+.#.#..#....#.##......###.###..#...#.........#.#.#.#........##...
+.##..###.##..#....#..###.#.#.###..#.........###.#.#........#....
+................................................................
+.###.#...###.##..##..###.##...##............###.##..............
+.#...#....#..#.#.#.#..#..#.#.#..............#.#.#.#........#.#..
+.#...#....#..##..##...#..#.#.#.#............#.#.#.#........##...
+.###.###.###.#...#...###.#.#..##............###.#.#........#....
+................................................................
+..##.#.#.###.###.###.###.##...##............###.###.###.........
+.##..###..#..#....#...#..#.#.#..............#.#.#...#......#.#..
+...#.#.#..#..##...#...#..#.#.#.#............#.#.##..##.....##...
+.##..#.#.###.#....#..###.#.#..##............###.#...#......#....
+................................................................
+..##.#.#.###.##..###.##...##................###.###.###.........
+...#.#.#.###.#.#..#..#.#.#..................#.#.#...#......#.#..
+...#.#.#.#.#.##...#..#.#.#.#................#.#.##..##.....##...
+.##...##.#.#.#...###.#.#..##................###.#...#......#....
+................................................................
+................................................................
+
+Got:
+
+............#####.#....................#..........##............
+..............#.....##.#...##..###...###.#..#..##..#............
+..............#...#.#.#.#.#..#.#..#.#..#.#..#.#.................
+..............#...#.#...#.####.#..#.#..#.#..#..#................
+..............#...#.#...#.#....#..#.#..#.#..#...#...............
+..............#...#.#...#..###.#..#..###..###.##................
+................................................................
+................................................................
+...........#####...##.......##..#####...........#######.........
+..........#######.###......###.#######.........###...###........
+.........###...##.###......###.###..###.......###.....##........
+........###.......###..........###...##.......###.....##........
+........###..#.#..###.......##.###...##.......###.....##........
+........###.......######...###.###...##........###...##.........
+........###.#...#.#######..###.###...##.####....######..........
+........###..###..###..###.###.###..###.####...###..###.........
+........###.......###...##.###.#######........###....###........
+........###.......###...##.###.######........###......##........
+........###.......###...##.###.###...........###......##........
+........###.......###...##.###.###.#.#...###.###......##........
+.........###...##.###...##.###.###.###...#.#.####....###........
+..........#######.###...##.###.###...#...#.#..#########.........
+...........#####..###...##.###.###...#.#.###...#######..........
+................................................................
+................................................................
+.............###..##...##.#.......##......#.#....##.............
+..............#..#..#.#...###....#...#..#...###.#..#............
+..............#..####..#..#.......#..#..#.#.#...####............
+..............#..#......#.#........#.#..#.#.#...#...............
+..............#...###.##...##....##...###.#..##..###............
+................................................................
+..........#...........................................#.........', chip8/tests/tests.rs:26:9
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_quirks
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.00s
+
