@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span id="%24con2tag_2zY35HQeuRyCeVJJBcOpwv"><span id="%24con2tag_Aka5hvsHB5jATOamdlEpUP"><span id="%24con2tag_AYugaXxRz7tGPo0TkCjmkf"></span></span></span><span class="hs-pragma">{-# LANGUAGE DeriveGeneric #-}</span><span>
+</span><span id="line-2"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">HW5.Base</span><span>
+</span><span id="line-3"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="HW5.Base.html#HiError"><span class="hs-identifier">HiError</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Base.html#HiExpr"><span class="hs-identifier">HiExpr</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Base.html#HiFun"><span class="hs-identifier">HiFun</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier">HiValue</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Base.html#Arity"><span class="hs-identifier">Arity</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Base.html#HiMonad"><span class="hs-identifier">HiMonad</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-9"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Base.html#HiAction"><span class="hs-identifier">HiAction</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-10"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Base.html#BinOp"><span class="hs-identifier">BinOp</span></a></span><span>
+</span><span id="line-11"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Base.html#getArity"><span class="hs-identifier">getArity</span></a></span><span>
+</span><span id="line-12"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Map</span></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Text</span></span><span> </span><span>
+</span><span id="line-16"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Time</span></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Sequence</span></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.ByteString</span></span><span> </span><span>
+</span><span id="line-19"></span><span>
+</span><span id="line-20"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Codec.Serialise</span></span><span>
+</span><span id="line-21"></span><span>
+</span><span id="line-22"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">GHC.Generics</span></span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span class="hs-comment">-- | Type alias for a closed binary operation</span><span>
+</span><span id="line-25"></span><span class="hs-keyword">type</span><span> </span><span id="BinOp"><span class="annot"><a href="HW5.Base.html#BinOp"><span class="hs-identifier hs-var">BinOp</span></a></span></span><span> </span><span id="local-6989586621679092653"><span class="annot"><a href="#local-6989586621679092653"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="#local-6989586621679092653"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621679092653"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621679092653"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-26"></span><span>
+</span><span id="line-27"></span><span class="hs-comment">-- | Function arity data class</span><span>
+</span><span id="line-28"></span><span class="hs-keyword">data</span><span> </span><span id="Arity"><span class="annot"><a href="HW5.Base.html#Arity"><span class="hs-identifier hs-var">Arity</span></a></span></span><span>
+</span><span id="line-29"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="Unary"><span class="annot"><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span></span><span>
+</span><span id="line-30"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Binary"><span class="annot"><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span></span><span>
+</span><span id="line-31"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Trinary"><span class="annot"><a href="HW5.Base.html#Trinary"><span class="hs-identifier hs-var">Trinary</span></a></span></span><span>
+</span><span id="line-32"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Arbitrary"><span class="annot"><a href="HW5.Base.html#Arbitrary"><span class="hs-identifier hs-var">Arbitrary</span></a></span></span><span>
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span class="hs-comment">-- | Functions supported by the Hi language</span><span>
+</span><span id="line-35"></span><span id="local-6989586621679092647"><span id="local-6989586621679092648"></span></span><span class="hs-keyword">data</span><span> </span><span id="HiFun"><span class="annot"><a href="HW5.Base.html#HiFun"><span class="hs-identifier hs-var">HiFun</span></a></span></span><span> </span><span>
+</span><span id="line-36"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="HiFunDiv"><span class="annot"><a href="HW5.Base.html#HiFunDiv"><span class="hs-identifier hs-var">HiFunDiv</span></a></span></span><span>
+</span><span id="line-37"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunMul"><span class="annot"><a href="HW5.Base.html#HiFunMul"><span class="hs-identifier hs-var">HiFunMul</span></a></span></span><span>
+</span><span id="line-38"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunAdd"><span class="annot"><a href="HW5.Base.html#HiFunAdd"><span class="hs-identifier hs-var">HiFunAdd</span></a></span></span><span>
+</span><span id="line-39"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunSub"><span class="annot"><a href="HW5.Base.html#HiFunSub"><span class="hs-identifier hs-var">HiFunSub</span></a></span></span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunNot"><span class="annot"><a href="HW5.Base.html#HiFunNot"><span class="hs-identifier hs-var">HiFunNot</span></a></span></span><span>
+</span><span id="line-41"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunAnd"><span class="annot"><a href="HW5.Base.html#HiFunAnd"><span class="hs-identifier hs-var">HiFunAnd</span></a></span></span><span>
+</span><span id="line-42"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunEquals"><span class="annot"><a href="HW5.Base.html#HiFunEquals"><span class="hs-identifier hs-var">HiFunEquals</span></a></span></span><span>
+</span><span id="line-43"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunOr"><span class="annot"><a href="HW5.Base.html#HiFunOr"><span class="hs-identifier hs-var">HiFunOr</span></a></span></span><span>
+</span><span id="line-44"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunLessThan"><span class="annot"><a href="HW5.Base.html#HiFunLessThan"><span class="hs-identifier hs-var">HiFunLessThan</span></a></span></span><span>
+</span><span id="line-45"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunGreaterThan"><span class="annot"><a href="HW5.Base.html#HiFunGreaterThan"><span class="hs-identifier hs-var">HiFunGreaterThan</span></a></span></span><span>
+</span><span id="line-46"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunNotLessThan"><span class="annot"><a href="HW5.Base.html#HiFunNotLessThan"><span class="hs-identifier hs-var">HiFunNotLessThan</span></a></span></span><span>
+</span><span id="line-47"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunNotGreaterThan"><span class="annot"><a href="HW5.Base.html#HiFunNotGreaterThan"><span class="hs-identifier hs-var">HiFunNotGreaterThan</span></a></span></span><span>
+</span><span id="line-48"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunNotEquals"><span class="annot"><a href="HW5.Base.html#HiFunNotEquals"><span class="hs-identifier hs-var">HiFunNotEquals</span></a></span></span><span>
+</span><span id="line-49"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunIf"><span class="annot"><a href="HW5.Base.html#HiFunIf"><span class="hs-identifier hs-var">HiFunIf</span></a></span></span><span>  </span><span>
+</span><span id="line-50"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunLength"><span class="annot"><a href="HW5.Base.html#HiFunLength"><span class="hs-identifier hs-var">HiFunLength</span></a></span></span><span>
+</span><span id="line-51"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunToUpper"><span class="annot"><a href="HW5.Base.html#HiFunToUpper"><span class="hs-identifier hs-var">HiFunToUpper</span></a></span></span><span>
+</span><span id="line-52"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunToLower"><span class="annot"><a href="HW5.Base.html#HiFunToLower"><span class="hs-identifier hs-var">HiFunToLower</span></a></span></span><span>
+</span><span id="line-53"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunReverse"><span class="annot"><a href="HW5.Base.html#HiFunReverse"><span class="hs-identifier hs-var">HiFunReverse</span></a></span></span><span>
+</span><span id="line-54"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunTrim"><span class="annot"><a href="HW5.Base.html#HiFunTrim"><span class="hs-identifier hs-var">HiFunTrim</span></a></span></span><span>
+</span><span id="line-55"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunList"><span class="annot"><a href="HW5.Base.html#HiFunList"><span class="hs-identifier hs-var">HiFunList</span></a></span></span><span>
+</span><span id="line-56"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunRange"><span class="annot"><a href="HW5.Base.html#HiFunRange"><span class="hs-identifier hs-var">HiFunRange</span></a></span></span><span>
+</span><span id="line-57"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunFold"><span class="annot"><a href="HW5.Base.html#HiFunFold"><span class="hs-identifier hs-var">HiFunFold</span></a></span></span><span>
+</span><span id="line-58"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunPackBytes"><span class="annot"><a href="HW5.Base.html#HiFunPackBytes"><span class="hs-identifier hs-var">HiFunPackBytes</span></a></span></span><span>
+</span><span id="line-59"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunUnpackBytes"><span class="annot"><a href="HW5.Base.html#HiFunUnpackBytes"><span class="hs-identifier hs-var">HiFunUnpackBytes</span></a></span></span><span>
+</span><span id="line-60"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunEncodeUtf8"><span class="annot"><a href="HW5.Base.html#HiFunEncodeUtf8"><span class="hs-identifier hs-var">HiFunEncodeUtf8</span></a></span></span><span>
+</span><span id="line-61"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunDecodeUtf8"><span class="annot"><a href="HW5.Base.html#HiFunDecodeUtf8"><span class="hs-identifier hs-var">HiFunDecodeUtf8</span></a></span></span><span>
+</span><span id="line-62"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunZip"><span class="annot"><a href="HW5.Base.html#HiFunZip"><span class="hs-identifier hs-var">HiFunZip</span></a></span></span><span>
+</span><span id="line-63"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunUnzip"><span class="annot"><a href="HW5.Base.html#HiFunUnzip"><span class="hs-identifier hs-var">HiFunUnzip</span></a></span></span><span>
+</span><span id="line-64"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunSerialise"><span class="annot"><a href="HW5.Base.html#HiFunSerialise"><span class="hs-identifier hs-var">HiFunSerialise</span></a></span></span><span>
+</span><span id="line-65"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunDeserialise"><span class="annot"><a href="HW5.Base.html#HiFunDeserialise"><span class="hs-identifier hs-var">HiFunDeserialise</span></a></span></span><span>
+</span><span id="line-66"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunRead"><span class="annot"><a href="HW5.Base.html#HiFunRead"><span class="hs-identifier hs-var">HiFunRead</span></a></span></span><span>
+</span><span id="line-67"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunWrite"><span class="annot"><a href="HW5.Base.html#HiFunWrite"><span class="hs-identifier hs-var">HiFunWrite</span></a></span></span><span>
+</span><span id="line-68"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunMkDir"><span class="annot"><a href="HW5.Base.html#HiFunMkDir"><span class="hs-identifier hs-var">HiFunMkDir</span></a></span></span><span>
+</span><span id="line-69"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunChDir"><span class="annot"><a href="HW5.Base.html#HiFunChDir"><span class="hs-identifier hs-var">HiFunChDir</span></a></span></span><span>
+</span><span id="line-70"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunParseTime"><span class="annot"><a href="HW5.Base.html#HiFunParseTime"><span class="hs-identifier hs-var">HiFunParseTime</span></a></span></span><span>
+</span><span id="line-71"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunRand"><span class="annot"><a href="HW5.Base.html#HiFunRand"><span class="hs-identifier hs-var">HiFunRand</span></a></span></span><span>
+</span><span id="line-72"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunEcho"><span class="annot"><a href="HW5.Base.html#HiFunEcho"><span class="hs-identifier hs-var">HiFunEcho</span></a></span></span><span>
+</span><span id="line-73"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunCount"><span class="annot"><a href="HW5.Base.html#HiFunCount"><span class="hs-identifier hs-var">HiFunCount</span></a></span></span><span>
+</span><span id="line-74"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunKeys"><span class="annot"><a href="HW5.Base.html#HiFunKeys"><span class="hs-identifier hs-var">HiFunKeys</span></a></span></span><span>
+</span><span id="line-75"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunValues"><span class="annot"><a href="HW5.Base.html#HiFunValues"><span class="hs-identifier hs-var">HiFunValues</span></a></span></span><span>
+</span><span id="line-76"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiFunInvert"><span class="annot"><a href="HW5.Base.html#HiFunInvert"><span class="hs-identifier hs-var">HiFunInvert</span></a></span></span><span>
+</span><span id="line-77"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679092600"><span id="local-6989586621679092602"><span id="local-6989586621679092604"><span class="annot"><span class="annottext">Int -&gt; HiFun -&gt; ShowS
+[HiFun] -&gt; ShowS
+HiFun -&gt; String
+(Int -&gt; HiFun -&gt; ShowS)
+-&gt; (HiFun -&gt; String) -&gt; ([HiFun] -&gt; ShowS) -&gt; Show HiFun
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [HiFun] -&gt; ShowS
+$cshowList :: [HiFun] -&gt; ShowS
+show :: HiFun -&gt; String
+$cshow :: HiFun -&gt; String
+showsPrec :: Int -&gt; HiFun -&gt; ShowS
+$cshowsPrec :: Int -&gt; HiFun -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092595"><span id="local-6989586621679092597"><span class="annot"><span class="annottext">HiFun -&gt; HiFun -&gt; Bool
+(HiFun -&gt; HiFun -&gt; Bool) -&gt; (HiFun -&gt; HiFun -&gt; Bool) -&gt; Eq HiFun
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: HiFun -&gt; HiFun -&gt; Bool
+$c/= :: HiFun -&gt; HiFun -&gt; Bool
+== :: HiFun -&gt; HiFun -&gt; Bool
+$c== :: HiFun -&gt; HiFun -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">(forall x. HiFun -&gt; Rep HiFun x)
+-&gt; (forall x. Rep HiFun x -&gt; HiFun) -&gt; Generic HiFun
+forall x. Rep HiFun x -&gt; HiFun
+forall x. HiFun -&gt; Rep HiFun x
+forall a.
+(forall x. a -&gt; Rep a x) -&gt; (forall x. Rep a x -&gt; a) -&gt; Generic a
+$cto :: forall x. Rep HiFun x -&gt; HiFun
+$cfrom :: forall x. HiFun -&gt; Rep HiFun x
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">Generic</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092576"><span id="local-6989586621679092578"><span id="local-6989586621679092580"><span id="local-6989586621679092582"><span id="local-6989586621679092584"><span id="local-6989586621679092586"><span id="local-6989586621679092588"><span class="annot"><span class="annottext">Eq HiFun
+Eq HiFun
+-&gt; (HiFun -&gt; HiFun -&gt; Ordering)
+-&gt; (HiFun -&gt; HiFun -&gt; Bool)
+-&gt; (HiFun -&gt; HiFun -&gt; Bool)
+-&gt; (HiFun -&gt; HiFun -&gt; Bool)
+-&gt; (HiFun -&gt; HiFun -&gt; Bool)
+-&gt; (HiFun -&gt; HiFun -&gt; HiFun)
+-&gt; (HiFun -&gt; HiFun -&gt; HiFun)
+-&gt; Ord HiFun
+HiFun -&gt; HiFun -&gt; Bool
+HiFun -&gt; HiFun -&gt; Ordering
+HiFun -&gt; HiFun -&gt; HiFun
+forall a.
+Eq a
+-&gt; (a -&gt; a -&gt; Ordering)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; a)
+-&gt; (a -&gt; a -&gt; a)
+-&gt; Ord a
+min :: HiFun -&gt; HiFun -&gt; HiFun
+$cmin :: HiFun -&gt; HiFun -&gt; HiFun
+max :: HiFun -&gt; HiFun -&gt; HiFun
+$cmax :: HiFun -&gt; HiFun -&gt; HiFun
+&gt;= :: HiFun -&gt; HiFun -&gt; Bool
+$c&gt;= :: HiFun -&gt; HiFun -&gt; Bool
+&gt; :: HiFun -&gt; HiFun -&gt; Bool
+$c&gt; :: HiFun -&gt; HiFun -&gt; Bool
+&lt;= :: HiFun -&gt; HiFun -&gt; Bool
+$c&lt;= :: HiFun -&gt; HiFun -&gt; Bool
+&lt; :: HiFun -&gt; HiFun -&gt; Bool
+$c&lt; :: HiFun -&gt; HiFun -&gt; Bool
+compare :: HiFun -&gt; HiFun -&gt; Ordering
+$ccompare :: HiFun -&gt; HiFun -&gt; Ordering
+$cp1Ord :: Eq HiFun
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Ord</span></span></span></span></span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-78"></span><span>
+</span><span id="line-79"></span><span class="hs-comment">-- | Values in the Hi language</span><span>
+</span><span id="line-80"></span><span id="local-6989586621679092573"><span id="local-6989586621679092574"></span></span><span class="hs-keyword">data</span><span> </span><span id="HiValue"><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-var">HiValue</span></a></span></span><span> </span><span>
+</span><span id="line-81"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="HiValueBool"><span class="annot"><a href="HW5.Base.html#HiValueBool"><span class="hs-identifier hs-var">HiValueBool</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span>
+</span><span id="line-82"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiValueNumber"><span class="annot"><a href="HW5.Base.html#HiValueNumber"><span class="hs-identifier hs-var">HiValueNumber</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Rational</span></span><span> </span><span>
+</span><span id="line-83"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiValueFunction"><span class="annot"><a href="HW5.Base.html#HiValueFunction"><span class="hs-identifier hs-var">HiValueFunction</span></a></span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiFun"><span class="hs-identifier hs-type">HiFun</span></a></span><span>
+</span><span id="line-84"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiValueNull"><span class="annot"><a href="HW5.Base.html#HiValueNull"><span class="hs-identifier hs-var">HiValueNull</span></a></span></span><span>
+</span><span id="line-85"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiValueString"><span class="annot"><a href="HW5.Base.html#HiValueString"><span class="hs-identifier hs-var">HiValueString</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
+</span><span id="line-86"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiValueList"><span class="annot"><a href="HW5.Base.html#HiValueList"><span class="hs-identifier hs-var">HiValueList</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Seq</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-87"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiValueBytes"><span class="annot"><a href="HW5.Base.html#HiValueBytes"><span class="hs-identifier hs-var">HiValueBytes</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span>
+</span><span id="line-88"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiValueAction"><span class="annot"><a href="HW5.Base.html#HiValueAction"><span class="hs-identifier hs-var">HiValueAction</span></a></span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiAction"><span class="hs-identifier hs-type">HiAction</span></a></span><span>
+</span><span id="line-89"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiValueTime"><span class="annot"><a href="HW5.Base.html#HiValueTime"><span class="hs-identifier hs-var">HiValueTime</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">UTCTime</span></span><span>
+</span><span id="line-90"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiValueDict"><span class="annot"><a href="HW5.Base.html#HiValueDict"><span class="hs-identifier hs-var">HiValueDict</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Map</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-91"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679092552"><span id="local-6989586621679092554"><span id="local-6989586621679092556"><span class="annot"><span class="annottext">Int -&gt; HiValue -&gt; ShowS
+[HiValue] -&gt; ShowS
+HiValue -&gt; String
+(Int -&gt; HiValue -&gt; ShowS)
+-&gt; (HiValue -&gt; String) -&gt; ([HiValue] -&gt; ShowS) -&gt; Show HiValue
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [HiValue] -&gt; ShowS
+$cshowList :: [HiValue] -&gt; ShowS
+show :: HiValue -&gt; String
+$cshow :: HiValue -&gt; String
+showsPrec :: Int -&gt; HiValue -&gt; ShowS
+$cshowsPrec :: Int -&gt; HiValue -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092548"><span id="local-6989586621679092550"><span class="annot"><span class="annottext">HiValue -&gt; HiValue -&gt; Bool
+(HiValue -&gt; HiValue -&gt; Bool)
+-&gt; (HiValue -&gt; HiValue -&gt; Bool) -&gt; Eq HiValue
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: HiValue -&gt; HiValue -&gt; Bool
+$c/= :: HiValue -&gt; HiValue -&gt; Bool
+== :: HiValue -&gt; HiValue -&gt; Bool
+$c== :: HiValue -&gt; HiValue -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">(forall x. HiValue -&gt; Rep HiValue x)
+-&gt; (forall x. Rep HiValue x -&gt; HiValue) -&gt; Generic HiValue
+forall x. Rep HiValue x -&gt; HiValue
+forall x. HiValue -&gt; Rep HiValue x
+forall a.
+(forall x. a -&gt; Rep a x) -&gt; (forall x. Rep a x -&gt; a) -&gt; Generic a
+$cto :: forall x. Rep HiValue x -&gt; HiValue
+$cfrom :: forall x. HiValue -&gt; Rep HiValue x
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">Generic</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092531"><span id="local-6989586621679092533"><span id="local-6989586621679092535"><span id="local-6989586621679092537"><span id="local-6989586621679092539"><span id="local-6989586621679092541"><span id="local-6989586621679092543"><span class="annot"><span class="annottext">Eq HiValue
+Eq HiValue
+-&gt; (HiValue -&gt; HiValue -&gt; Ordering)
+-&gt; (HiValue -&gt; HiValue -&gt; Bool)
+-&gt; (HiValue -&gt; HiValue -&gt; Bool)
+-&gt; (HiValue -&gt; HiValue -&gt; Bool)
+-&gt; (HiValue -&gt; HiValue -&gt; Bool)
+-&gt; (HiValue -&gt; HiValue -&gt; HiValue)
+-&gt; (HiValue -&gt; HiValue -&gt; HiValue)
+-&gt; Ord HiValue
+HiValue -&gt; HiValue -&gt; Bool
+HiValue -&gt; HiValue -&gt; Ordering
+HiValue -&gt; HiValue -&gt; HiValue
+forall a.
+Eq a
+-&gt; (a -&gt; a -&gt; Ordering)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; a)
+-&gt; (a -&gt; a -&gt; a)
+-&gt; Ord a
+min :: HiValue -&gt; HiValue -&gt; HiValue
+$cmin :: HiValue -&gt; HiValue -&gt; HiValue
+max :: HiValue -&gt; HiValue -&gt; HiValue
+$cmax :: HiValue -&gt; HiValue -&gt; HiValue
+&gt;= :: HiValue -&gt; HiValue -&gt; Bool
+$c&gt;= :: HiValue -&gt; HiValue -&gt; Bool
+&gt; :: HiValue -&gt; HiValue -&gt; Bool
+$c&gt; :: HiValue -&gt; HiValue -&gt; Bool
+&lt;= :: HiValue -&gt; HiValue -&gt; Bool
+$c&lt;= :: HiValue -&gt; HiValue -&gt; Bool
+&lt; :: HiValue -&gt; HiValue -&gt; Bool
+$c&lt; :: HiValue -&gt; HiValue -&gt; Bool
+compare :: HiValue -&gt; HiValue -&gt; Ordering
+$ccompare :: HiValue -&gt; HiValue -&gt; Ordering
+$cp1Ord :: Eq HiValue
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Ord</span></span></span></span></span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-92"></span><span>
+</span><span id="line-93"></span><span class="hs-comment">-- | Expressions in the Hi language</span><span>
+</span><span id="line-94"></span><span class="hs-keyword">data</span><span> </span><span id="HiExpr"><span class="annot"><a href="HW5.Base.html#HiExpr"><span class="hs-identifier hs-var">HiExpr</span></a></span></span><span> </span><span>
+</span><span id="line-95"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="HiExprValue"><span class="annot"><a href="HW5.Base.html#HiExprValue"><span class="hs-identifier hs-var">HiExprValue</span></a></span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-96"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiExprApply"><span class="annot"><a href="HW5.Base.html#HiExprApply"><span class="hs-identifier hs-var">HiExprApply</span></a></span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiExpr"><span class="hs-identifier hs-type">HiExpr</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><a href="HW5.Base.html#HiExpr"><span class="hs-identifier hs-type">HiExpr</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-97"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiExprRun"><span class="annot"><a href="HW5.Base.html#HiExprRun"><span class="hs-identifier hs-var">HiExprRun</span></a></span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiExpr"><span class="hs-identifier hs-type">HiExpr</span></a></span><span>
+</span><span id="line-98"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiExprDict"><span class="annot"><a href="HW5.Base.html#HiExprDict"><span class="hs-identifier hs-var">HiExprDict</span></a></span></span><span> </span><span class="hs-special">[</span><span class="hs-special">(</span><span class="annot"><a href="HW5.Base.html#HiExpr"><span class="hs-identifier hs-type">HiExpr</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Base.html#HiExpr"><span class="hs-identifier hs-type">HiExpr</span></a></span><span class="hs-special">)</span><span class="hs-special">]</span><span>
+</span><span id="line-99"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679092521"><span id="local-6989586621679092523"><span id="local-6989586621679092525"><span class="annot"><span class="annottext">Int -&gt; HiExpr -&gt; ShowS
+[HiExpr] -&gt; ShowS
+HiExpr -&gt; String
+(Int -&gt; HiExpr -&gt; ShowS)
+-&gt; (HiExpr -&gt; String) -&gt; ([HiExpr] -&gt; ShowS) -&gt; Show HiExpr
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [HiExpr] -&gt; ShowS
+$cshowList :: [HiExpr] -&gt; ShowS
+show :: HiExpr -&gt; String
+$cshow :: HiExpr -&gt; String
+showsPrec :: Int -&gt; HiExpr -&gt; ShowS
+$cshowsPrec :: Int -&gt; HiExpr -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092517"><span id="local-6989586621679092519"><span class="annot"><span class="annottext">HiExpr -&gt; HiExpr -&gt; Bool
+(HiExpr -&gt; HiExpr -&gt; Bool)
+-&gt; (HiExpr -&gt; HiExpr -&gt; Bool) -&gt; Eq HiExpr
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: HiExpr -&gt; HiExpr -&gt; Bool
+$c/= :: HiExpr -&gt; HiExpr -&gt; Bool
+== :: HiExpr -&gt; HiExpr -&gt; Bool
+$c== :: HiExpr -&gt; HiExpr -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-100"></span><span>
+</span><span id="line-101"></span><span class="hs-comment">-- | Errors in the Hi language</span><span>
+</span><span id="line-102"></span><span id="local-6989586621679092515"><span id="local-6989586621679092516"></span></span><span class="hs-keyword">data</span><span> </span><span id="HiError"><span class="annot"><a href="HW5.Base.html#HiError"><span class="hs-identifier hs-var">HiError</span></a></span></span><span> </span><span>
+</span><span id="line-103"></span><span>  </span><span class="hs-glyph">=</span><span> </span><span id="HiErrorInvalidArgument"><span class="annot"><a href="HW5.Base.html#HiErrorInvalidArgument"><span class="hs-identifier hs-var">HiErrorInvalidArgument</span></a></span></span><span>
+</span><span id="line-104"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiErrorInvalidFunction"><span class="annot"><a href="HW5.Base.html#HiErrorInvalidFunction"><span class="hs-identifier hs-var">HiErrorInvalidFunction</span></a></span></span><span>
+</span><span id="line-105"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiErrorArityMismatch"><span class="annot"><a href="HW5.Base.html#HiErrorArityMismatch"><span class="hs-identifier hs-var">HiErrorArityMismatch</span></a></span></span><span>
+</span><span id="line-106"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiErrorDivideByZero"><span class="annot"><a href="HW5.Base.html#HiErrorDivideByZero"><span class="hs-identifier hs-var">HiErrorDivideByZero</span></a></span></span><span>
+</span><span id="line-107"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679092505"><span id="local-6989586621679092507"><span id="local-6989586621679092509"><span class="annot"><span class="annottext">Int -&gt; HiError -&gt; ShowS
+[HiError] -&gt; ShowS
+HiError -&gt; String
+(Int -&gt; HiError -&gt; ShowS)
+-&gt; (HiError -&gt; String) -&gt; ([HiError] -&gt; ShowS) -&gt; Show HiError
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [HiError] -&gt; ShowS
+$cshowList :: [HiError] -&gt; ShowS
+show :: HiError -&gt; String
+$cshow :: HiError -&gt; String
+showsPrec :: Int -&gt; HiError -&gt; ShowS
+$cshowsPrec :: Int -&gt; HiError -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">(forall x. HiError -&gt; Rep HiError x)
+-&gt; (forall x. Rep HiError x -&gt; HiError) -&gt; Generic HiError
+forall x. Rep HiError x -&gt; HiError
+forall x. HiError -&gt; Rep HiError x
+forall a.
+(forall x. a -&gt; Rep a x) -&gt; (forall x. Rep a x -&gt; a) -&gt; Generic a
+$cto :: forall x. Rep HiError x -&gt; HiError
+$cfrom :: forall x. HiError -&gt; Rep HiError x
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">Generic</span></span><span class="hs-special">)</span><span>
+</span><span id="line-108"></span><span>
+</span><span id="line-109"></span><span class="hs-comment">-- | Actions in the Hi language</span><span>
+</span><span id="line-110"></span><span id="local-6989586621679092501"><span id="local-6989586621679092502"></span></span><span class="hs-keyword">data</span><span> </span><span id="HiAction"><span class="annot"><a href="HW5.Base.html#HiAction"><span class="hs-identifier hs-var">HiAction</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-111"></span><span>    </span><span id="HiActionRead"><span class="annot"><a href="HW5.Base.html#HiActionRead"><span class="hs-identifier hs-var">HiActionRead</span></a></span></span><span>  </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span>
+</span><span id="line-112"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiActionWrite"><span class="annot"><a href="HW5.Base.html#HiActionWrite"><span class="hs-identifier hs-var">HiActionWrite</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">ByteString</span></span><span>
+</span><span id="line-113"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiActionMkDir"><span class="annot"><a href="HW5.Base.html#HiActionMkDir"><span class="hs-identifier hs-var">HiActionMkDir</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span>
+</span><span id="line-114"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiActionChDir"><span class="annot"><a href="HW5.Base.html#HiActionChDir"><span class="hs-identifier hs-var">HiActionChDir</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span>
+</span><span id="line-115"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiActionCwd"><span class="annot"><a href="HW5.Base.html#HiActionCwd"><span class="hs-identifier hs-var">HiActionCwd</span></a></span></span><span>
+</span><span id="line-116"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiActionNow"><span class="annot"><a href="HW5.Base.html#HiActionNow"><span class="hs-identifier hs-var">HiActionNow</span></a></span></span><span>
+</span><span id="line-117"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiActionRand"><span class="annot"><a href="HW5.Base.html#HiActionRand"><span class="hs-identifier hs-var">HiActionRand</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span>
+</span><span id="line-118"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="HiActionEcho"><span class="annot"><a href="HW5.Base.html#HiActionEcho"><span class="hs-identifier hs-var">HiActionEcho</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span>
+</span><span id="line-119"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679092486"><span id="local-6989586621679092488"><span id="local-6989586621679092490"><span class="annot"><span class="annottext">Int -&gt; HiAction -&gt; ShowS
+[HiAction] -&gt; ShowS
+HiAction -&gt; String
+(Int -&gt; HiAction -&gt; ShowS)
+-&gt; (HiAction -&gt; String) -&gt; ([HiAction] -&gt; ShowS) -&gt; Show HiAction
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [HiAction] -&gt; ShowS
+$cshowList :: [HiAction] -&gt; ShowS
+show :: HiAction -&gt; String
+$cshow :: HiAction -&gt; String
+showsPrec :: Int -&gt; HiAction -&gt; ShowS
+$cshowsPrec :: Int -&gt; HiAction -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092482"><span id="local-6989586621679092484"><span class="annot"><span class="annottext">HiAction -&gt; HiAction -&gt; Bool
+(HiAction -&gt; HiAction -&gt; Bool)
+-&gt; (HiAction -&gt; HiAction -&gt; Bool) -&gt; Eq HiAction
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: HiAction -&gt; HiAction -&gt; Bool
+$c/= :: HiAction -&gt; HiAction -&gt; Bool
+== :: HiAction -&gt; HiAction -&gt; Bool
+$c== :: HiAction -&gt; HiAction -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">(forall x. HiAction -&gt; Rep HiAction x)
+-&gt; (forall x. Rep HiAction x -&gt; HiAction) -&gt; Generic HiAction
+forall x. Rep HiAction x -&gt; HiAction
+forall x. HiAction -&gt; Rep HiAction x
+forall a.
+(forall x. a -&gt; Rep a x) -&gt; (forall x. Rep a x -&gt; a) -&gt; Generic a
+$cto :: forall x. Rep HiAction x -&gt; HiAction
+$cfrom :: forall x. HiAction -&gt; Rep HiAction x
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">Generic</span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092465"><span id="local-6989586621679092467"><span id="local-6989586621679092469"><span id="local-6989586621679092471"><span id="local-6989586621679092473"><span id="local-6989586621679092475"><span id="local-6989586621679092477"><span class="annot"><span class="annottext">Eq HiAction
+Eq HiAction
+-&gt; (HiAction -&gt; HiAction -&gt; Ordering)
+-&gt; (HiAction -&gt; HiAction -&gt; Bool)
+-&gt; (HiAction -&gt; HiAction -&gt; Bool)
+-&gt; (HiAction -&gt; HiAction -&gt; Bool)
+-&gt; (HiAction -&gt; HiAction -&gt; Bool)
+-&gt; (HiAction -&gt; HiAction -&gt; HiAction)
+-&gt; (HiAction -&gt; HiAction -&gt; HiAction)
+-&gt; Ord HiAction
+HiAction -&gt; HiAction -&gt; Bool
+HiAction -&gt; HiAction -&gt; Ordering
+HiAction -&gt; HiAction -&gt; HiAction
+forall a.
+Eq a
+-&gt; (a -&gt; a -&gt; Ordering)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; a)
+-&gt; (a -&gt; a -&gt; a)
+-&gt; Ord a
+min :: HiAction -&gt; HiAction -&gt; HiAction
+$cmin :: HiAction -&gt; HiAction -&gt; HiAction
+max :: HiAction -&gt; HiAction -&gt; HiAction
+$cmax :: HiAction -&gt; HiAction -&gt; HiAction
+&gt;= :: HiAction -&gt; HiAction -&gt; Bool
+$c&gt;= :: HiAction -&gt; HiAction -&gt; Bool
+&gt; :: HiAction -&gt; HiAction -&gt; Bool
+$c&gt; :: HiAction -&gt; HiAction -&gt; Bool
+&lt;= :: HiAction -&gt; HiAction -&gt; Bool
+$c&lt;= :: HiAction -&gt; HiAction -&gt; Bool
+&lt; :: HiAction -&gt; HiAction -&gt; Bool
+$c&lt; :: HiAction -&gt; HiAction -&gt; Bool
+compare :: HiAction -&gt; HiAction -&gt; Ordering
+$ccompare :: HiAction -&gt; HiAction -&gt; Ordering
+$cp1Ord :: Eq HiAction
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Ord</span></span></span></span></span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-120"></span><span>
+</span><span id="line-121"></span><span class="hs-comment">-- | HiMonad typeclass for computing HiActions</span><span>
+</span><span id="line-122"></span><span class="hs-keyword">class</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Monad</span></span><span> </span><span class="annot"><a href="#local-6989586621679092464"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="hs-glyph">=&gt;</span><span> </span><span id="HiMonad"><span class="annot"><a href="HW5.Base.html#HiMonad"><span class="hs-identifier hs-var">HiMonad</span></a></span></span><span> </span><span id="local-6989586621679092464"><span class="annot"><a href="#local-6989586621679092464"><span class="hs-identifier hs-type">m</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-123"></span><span>  </span><span id="runAction"><span class="annot"><a href="HW5.Base.html#runAction"><span class="hs-identifier hs-type">runAction</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="HW5.Base.html#HiAction"><span class="hs-identifier hs-type">HiAction</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="#local-6989586621679092464"><span class="hs-identifier hs-type">m</span></a></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-124"></span><span>
+</span><span id="line-125"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621679092455"><span id="local-6989586621679092457"><span id="local-6989586621679092459"><span id="local-6989586621679092461"><span class="annot"><span class="hs-identifier hs-type">Serialise</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span></span></span></span></span><span>
+</span><span id="line-126"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621679092446"><span id="local-6989586621679092448"><span id="local-6989586621679092450"><span id="local-6989586621679092452"><span class="annot"><span class="hs-identifier hs-type">Serialise</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiFun"><span class="hs-identifier hs-type">HiFun</span></a></span></span></span></span></span><span>
+</span><span id="line-127"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621679092438"><span id="local-6989586621679092440"><span id="local-6989586621679092442"><span id="local-6989586621679092444"><span class="annot"><span class="hs-identifier hs-type">Serialise</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiError"><span class="hs-identifier hs-type">HiError</span></a></span></span></span></span></span><span>
+</span><span id="line-128"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621679092430"><span id="local-6989586621679092432"><span id="local-6989586621679092434"><span id="local-6989586621679092436"><span class="annot"><span class="hs-identifier hs-type">Serialise</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiAction"><span class="hs-identifier hs-type">HiAction</span></a></span></span></span></span></span><span>
+</span><span id="line-129"></span><span>
+</span><span id="line-130"></span><span class="hs-comment">-- | Returns the arity of a HiFun </span><span>
+</span><span id="line-131"></span><span class="annot"><a href="HW5.Base.html#getArity"><span class="hs-identifier hs-type">getArity</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="HW5.Base.html#HiFun"><span class="hs-identifier hs-type">HiFun</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="HW5.Base.html#Arity"><span class="hs-identifier hs-type">Arity</span></a></span><span>
+</span><span id="line-132"></span><span id="getArity"><span class="annot"><span class="annottext">getArity :: HiFun -&gt; Arity
+</span><a href="HW5.Base.html#getArity"><span class="hs-identifier hs-var hs-var">getArity</span></a></span></span><span> </span><span id="local-6989586621679092429"><span class="annot"><span class="annottext">HiFun
+</span><a href="#local-6989586621679092429"><span class="hs-identifier hs-var">f</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span>
+</span><span id="line-133"></span><span>  </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">HiFun
+</span><a href="#local-6989586621679092429"><span class="hs-identifier hs-var">f</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-134"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunLessThan"><span class="hs-identifier hs-var">HiFunLessThan</span></a></span><span>       </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-135"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunAdd"><span class="hs-identifier hs-var">HiFunAdd</span></a></span><span>            </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-136"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunSub"><span class="hs-identifier hs-var">HiFunSub</span></a></span><span>            </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-137"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunMul"><span class="hs-identifier hs-var">HiFunMul</span></a></span><span>            </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-138"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunDiv"><span class="hs-identifier hs-var">HiFunDiv</span></a></span><span>            </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-139"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunNot"><span class="hs-identifier hs-var">HiFunNot</span></a></span><span>            </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-140"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunAnd"><span class="hs-identifier hs-var">HiFunAnd</span></a></span><span>            </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-141"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunOr"><span class="hs-identifier hs-var">HiFunOr</span></a></span><span>             </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-142"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunGreaterThan"><span class="hs-identifier hs-var">HiFunGreaterThan</span></a></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-143"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunEquals"><span class="hs-identifier hs-var">HiFunEquals</span></a></span><span>         </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-144"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunNotLessThan"><span class="hs-identifier hs-var">HiFunNotLessThan</span></a></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-145"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunNotGreaterThan"><span class="hs-identifier hs-var">HiFunNotGreaterThan</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-146"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunNotEquals"><span class="hs-identifier hs-var">HiFunNotEquals</span></a></span><span>      </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-147"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunIf"><span class="hs-identifier hs-var">HiFunIf</span></a></span><span>             </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Trinary"><span class="hs-identifier hs-var">Trinary</span></a></span><span>
+</span><span id="line-148"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunLength"><span class="hs-identifier hs-var">HiFunLength</span></a></span><span>         </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-149"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunToUpper"><span class="hs-identifier hs-var">HiFunToUpper</span></a></span><span>        </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-150"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunToLower"><span class="hs-identifier hs-var">HiFunToLower</span></a></span><span>        </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-151"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunReverse"><span class="hs-identifier hs-var">HiFunReverse</span></a></span><span>        </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-152"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunTrim"><span class="hs-identifier hs-var">HiFunTrim</span></a></span><span>           </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-153"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunList"><span class="hs-identifier hs-var">HiFunList</span></a></span><span>           </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Arbitrary"><span class="hs-identifier hs-var">Arbitrary</span></a></span><span>
+</span><span id="line-154"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunRange"><span class="hs-identifier hs-var">HiFunRange</span></a></span><span>          </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-155"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunFold"><span class="hs-identifier hs-var">HiFunFold</span></a></span><span>           </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-156"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunPackBytes"><span class="hs-identifier hs-var">HiFunPackBytes</span></a></span><span>      </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-157"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunUnpackBytes"><span class="hs-identifier hs-var">HiFunUnpackBytes</span></a></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-158"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunEncodeUtf8"><span class="hs-identifier hs-var">HiFunEncodeUtf8</span></a></span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-159"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunDecodeUtf8"><span class="hs-identifier hs-var">HiFunDecodeUtf8</span></a></span><span>     </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-160"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunZip"><span class="hs-identifier hs-var">HiFunZip</span></a></span><span>            </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-161"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunUnzip"><span class="hs-identifier hs-var">HiFunUnzip</span></a></span><span>          </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-162"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunSerialise"><span class="hs-identifier hs-var">HiFunSerialise</span></a></span><span>      </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-163"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunDeserialise"><span class="hs-identifier hs-var">HiFunDeserialise</span></a></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-164"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunRead"><span class="hs-identifier hs-var">HiFunRead</span></a></span><span>           </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-165"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunWrite"><span class="hs-identifier hs-var">HiFunWrite</span></a></span><span>          </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-166"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunMkDir"><span class="hs-identifier hs-var">HiFunMkDir</span></a></span><span>          </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-167"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunChDir"><span class="hs-identifier hs-var">HiFunChDir</span></a></span><span>          </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-168"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunParseTime"><span class="hs-identifier hs-var">HiFunParseTime</span></a></span><span>      </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-169"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunRand"><span class="hs-identifier hs-var">HiFunRand</span></a></span><span>           </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Binary"><span class="hs-identifier hs-var">Binary</span></a></span><span>
+</span><span id="line-170"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunEcho"><span class="hs-identifier hs-var">HiFunEcho</span></a></span><span>           </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-171"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunCount"><span class="hs-identifier hs-var">HiFunCount</span></a></span><span>          </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-172"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunKeys"><span class="hs-identifier hs-var">HiFunKeys</span></a></span><span>           </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-173"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunValues"><span class="hs-identifier hs-var">HiFunValues</span></a></span><span>         </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-174"></span><span>    </span><span class="annot"><span class="annottext">HiFun
+</span><a href="HW5.Base.html#HiFunInvert"><span class="hs-identifier hs-var">HiFunInvert</span></a></span><span>         </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Arity
+</span><a href="HW5.Base.html#Unary"><span class="hs-identifier hs-var">Unary</span></a></span><span>
+</span><span id="line-175"></span><span>
+</span><span id="line-176"></span></pre></body></html>

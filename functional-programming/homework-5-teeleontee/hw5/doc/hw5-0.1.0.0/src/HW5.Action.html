@@ -1,0 +1,466 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span id="%24con2tag_cdzq4Kl8c1G3hErMZyzdn"></span><span class="hs-pragma">{-# LANGUAGE DerivingVia #-}</span><span>
+</span><span id="line-2"></span><span class="hs-pragma">{-# LANGUAGE InstanceSigs #-}</span><span>
+</span><span id="line-3"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">HW5.Action</span><span> </span><span class="hs-special">(</span><span>
+</span><span id="line-4"></span><span>  </span><span class="annot"><a href="HW5.Action.html#HIO"><span class="hs-identifier">HIO</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-5"></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Action.html#HiPermission"><span class="hs-identifier">HiPermission</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span> </span><span>
+</span><span id="line-6"></span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW5.Action.html#PermissionException"><span class="hs-identifier">PermissionException</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-7"></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-8"></span><span>
+</span><span id="line-9"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Prelude</span></span><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">read</span></span><span class="hs-special">)</span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="HW5.Base.html"><span class="hs-identifier">HW5.Base</span></a></span><span>
+</span><span id="line-12"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Text.Encoding</span></span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Set</span></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Text</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">T</span></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Sequence</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">S</span></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Time</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">getCurrentTime</span></span><span class="hs-special">)</span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Either</span></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="annot"><span class="hs-identifier">Data.ByteString</span></span><span> </span><span class="hs-keyword">as</span><span> </span><span class="annot"><span class="hs-identifier">B</span></span><span>
+</span><span id="line-20"></span><span>
+</span><span id="line-21"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Control.Exception</span></span><span>
+</span><span id="line-22"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Control.Monad.Trans.Reader</span></span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">System.Directory</span></span><span>
+</span><span id="line-25"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">System.Random</span></span><span>
+</span><span id="line-26"></span><span>
+</span><span id="line-27"></span><span class="hs-comment">-- | Permissions for read/write/time operations</span><span>
+</span><span id="line-28"></span><span class="hs-keyword">data</span><span> </span><span id="HiPermission"><span class="annot"><a href="HW5.Action.html#HiPermission"><span class="hs-identifier hs-var">HiPermission</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-29"></span><span>    </span><span id="AllowRead"><span class="annot"><a href="HW5.Action.html#AllowRead"><span class="hs-identifier hs-var">AllowRead</span></a></span></span><span>
+</span><span id="line-30"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="AllowWrite"><span class="annot"><a href="HW5.Action.html#AllowWrite"><span class="hs-identifier hs-var">AllowWrite</span></a></span></span><span>
+</span><span id="line-31"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="AllowTime"><span class="annot"><a href="HW5.Action.html#AllowTime"><span class="hs-identifier hs-var">AllowTime</span></a></span></span><span>
+</span><span id="line-32"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679092834"><span id="local-6989586621679092836"><span id="local-6989586621679092838"><span class="annot"><span class="annottext">Int -&gt; HiPermission -&gt; ShowS
+[HiPermission] -&gt; ShowS
+HiPermission -&gt; String
+(Int -&gt; HiPermission -&gt; ShowS)
+-&gt; (HiPermission -&gt; String)
+-&gt; ([HiPermission] -&gt; ShowS)
+-&gt; Show HiPermission
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [HiPermission] -&gt; ShowS
+$cshowList :: [HiPermission] -&gt; ShowS
+show :: HiPermission -&gt; String
+$cshow :: HiPermission -&gt; String
+showsPrec :: Int -&gt; HiPermission -&gt; ShowS
+$cshowsPrec :: Int -&gt; HiPermission -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092829"><span id="local-6989586621679092831"><span class="annot"><span class="annottext">HiPermission -&gt; HiPermission -&gt; Bool
+(HiPermission -&gt; HiPermission -&gt; Bool)
+-&gt; (HiPermission -&gt; HiPermission -&gt; Bool) -&gt; Eq HiPermission
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: HiPermission -&gt; HiPermission -&gt; Bool
+$c/= :: HiPermission -&gt; HiPermission -&gt; Bool
+== :: HiPermission -&gt; HiPermission -&gt; Bool
+$c== :: HiPermission -&gt; HiPermission -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092813"><span id="local-6989586621679092815"><span id="local-6989586621679092817"><span id="local-6989586621679092819"><span id="local-6989586621679092821"><span id="local-6989586621679092823"><span id="local-6989586621679092825"><span class="annot"><span class="annottext">Eq HiPermission
+Eq HiPermission
+-&gt; (HiPermission -&gt; HiPermission -&gt; Ordering)
+-&gt; (HiPermission -&gt; HiPermission -&gt; Bool)
+-&gt; (HiPermission -&gt; HiPermission -&gt; Bool)
+-&gt; (HiPermission -&gt; HiPermission -&gt; Bool)
+-&gt; (HiPermission -&gt; HiPermission -&gt; Bool)
+-&gt; (HiPermission -&gt; HiPermission -&gt; HiPermission)
+-&gt; (HiPermission -&gt; HiPermission -&gt; HiPermission)
+-&gt; Ord HiPermission
+HiPermission -&gt; HiPermission -&gt; Bool
+HiPermission -&gt; HiPermission -&gt; Ordering
+HiPermission -&gt; HiPermission -&gt; HiPermission
+forall a.
+Eq a
+-&gt; (a -&gt; a -&gt; Ordering)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; Bool)
+-&gt; (a -&gt; a -&gt; a)
+-&gt; (a -&gt; a -&gt; a)
+-&gt; Ord a
+min :: HiPermission -&gt; HiPermission -&gt; HiPermission
+$cmin :: HiPermission -&gt; HiPermission -&gt; HiPermission
+max :: HiPermission -&gt; HiPermission -&gt; HiPermission
+$cmax :: HiPermission -&gt; HiPermission -&gt; HiPermission
+&gt;= :: HiPermission -&gt; HiPermission -&gt; Bool
+$c&gt;= :: HiPermission -&gt; HiPermission -&gt; Bool
+&gt; :: HiPermission -&gt; HiPermission -&gt; Bool
+$c&gt; :: HiPermission -&gt; HiPermission -&gt; Bool
+&lt;= :: HiPermission -&gt; HiPermission -&gt; Bool
+$c&lt;= :: HiPermission -&gt; HiPermission -&gt; Bool
+&lt; :: HiPermission -&gt; HiPermission -&gt; Bool
+$c&lt; :: HiPermission -&gt; HiPermission -&gt; Bool
+compare :: HiPermission -&gt; HiPermission -&gt; Ordering
+$ccompare :: HiPermission -&gt; HiPermission -&gt; Ordering
+$cp1Ord :: Eq HiPermission
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Ord</span></span></span></span></span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-33"></span><span>
+</span><span id="line-34"></span><span class="hs-comment">-- Exception class for when the user doesn't have permission</span><span>
+</span><span id="line-35"></span><span class="hs-comment">-- for an operation</span><span>
+</span><span id="line-36"></span><span class="hs-keyword">newtype</span><span> </span><span id="PermissionException"><span class="annot"><a href="HW5.Action.html#PermissionException"><span class="hs-identifier hs-var">PermissionException</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-37"></span><span>  </span><span id="PermissionRequired"><span class="annot"><a href="HW5.Action.html#PermissionRequired"><span class="hs-identifier hs-var">PermissionRequired</span></a></span></span><span> </span><span class="annot"><a href="HW5.Action.html#HiPermission"><span class="hs-identifier hs-type">HiPermission</span></a></span><span>
+</span><span id="line-38"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679092805"><span id="local-6989586621679092807"><span id="local-6989586621679092809"><span class="annot"><span class="annottext">Int -&gt; PermissionException -&gt; ShowS
+[PermissionException] -&gt; ShowS
+PermissionException -&gt; String
+(Int -&gt; PermissionException -&gt; ShowS)
+-&gt; (PermissionException -&gt; String)
+-&gt; ([PermissionException] -&gt; ShowS)
+-&gt; Show PermissionException
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [PermissionException] -&gt; ShowS
+$cshowList :: [PermissionException] -&gt; ShowS
+show :: PermissionException -&gt; String
+$cshow :: PermissionException -&gt; String
+showsPrec :: Int -&gt; PermissionException -&gt; ShowS
+$cshowsPrec :: Int -&gt; PermissionException -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-39"></span><span>
+</span><span id="line-40"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621679092797"><span id="local-6989586621679092799"><span id="local-6989586621679092801"><span class="annot"><span class="hs-identifier hs-type">Exception</span></span><span> </span><span class="annot"><a href="HW5.Action.html#PermissionException"><span class="hs-identifier hs-type">PermissionException</span></a></span></span></span></span><span>
+</span><span id="line-41"></span><span>
+</span><span id="line-42"></span><span class="hs-comment">-- | IO for the Hi language takes in a set of the users permissions</span><span>
+</span><span id="line-43"></span><span class="hs-comment">-- and returns an IO operation</span><span>
+</span><span id="line-44"></span><span class="hs-keyword">newtype</span><span> </span><span id="HIO"><span class="annot"><a href="HW5.Action.html#HIO"><span class="hs-identifier hs-var">HIO</span></a></span></span><span> </span><span id="local-6989586621679092880"><span class="annot"><a href="#local-6989586621679092880"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="HIO"><span class="annot"><a href="HW5.Action.html#HIO"><span class="hs-identifier hs-var">HIO</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="runHIO"><span class="annot"><span class="annottext">HIO a -&gt; Set HiPermission -&gt; IO a
+</span><a href="HW5.Action.html#runHIO"><span class="hs-identifier hs-var hs-var">runHIO</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Set</span></span><span> </span><span class="annot"><a href="HW5.Action.html#HiPermission"><span class="hs-identifier hs-type">HiPermission</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="#local-6989586621679092880"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-special">}</span><span> </span><span>
+</span><span id="line-45"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679092790"><span id="local-6989586621679092792"><span class="annot"><span class="annottext">a -&gt; HIO b -&gt; HIO a
+(a -&gt; b) -&gt; HIO a -&gt; HIO b
+(forall a b. (a -&gt; b) -&gt; HIO a -&gt; HIO b)
+-&gt; (forall a b. a -&gt; HIO b -&gt; HIO a) -&gt; Functor HIO
+forall a b. a -&gt; HIO b -&gt; HIO a
+forall a b. (a -&gt; b) -&gt; HIO a -&gt; HIO b
+forall (f :: * -&gt; *).
+(forall a b. (a -&gt; b) -&gt; f a -&gt; f b)
+-&gt; (forall a b. a -&gt; f b -&gt; f a) -&gt; Functor f
+&lt;$ :: a -&gt; HIO b -&gt; HIO a
+$c&lt;$ :: forall a b. a -&gt; HIO b -&gt; HIO a
+fmap :: (a -&gt; b) -&gt; HIO a -&gt; HIO b
+$cfmap :: forall a b. (a -&gt; b) -&gt; HIO a -&gt; HIO b
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Functor</span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092778"><span id="local-6989586621679092780"><span id="local-6989586621679092782"><span id="local-6989586621679092784"><span id="local-6989586621679092786"><span class="annot"><span class="annottext">Functor HIO
+a -&gt; HIO a
+Functor HIO
+-&gt; (forall a. a -&gt; HIO a)
+-&gt; (forall a b. HIO (a -&gt; b) -&gt; HIO a -&gt; HIO b)
+-&gt; (forall a b c. (a -&gt; b -&gt; c) -&gt; HIO a -&gt; HIO b -&gt; HIO c)
+-&gt; (forall a b. HIO a -&gt; HIO b -&gt; HIO b)
+-&gt; (forall a b. HIO a -&gt; HIO b -&gt; HIO a)
+-&gt; Applicative HIO
+HIO a -&gt; HIO b -&gt; HIO b
+HIO a -&gt; HIO b -&gt; HIO a
+HIO (a -&gt; b) -&gt; HIO a -&gt; HIO b
+(a -&gt; b -&gt; c) -&gt; HIO a -&gt; HIO b -&gt; HIO c
+forall a. a -&gt; HIO a
+forall a b. HIO a -&gt; HIO b -&gt; HIO a
+forall a b. HIO a -&gt; HIO b -&gt; HIO b
+forall a b. HIO (a -&gt; b) -&gt; HIO a -&gt; HIO b
+forall a b c. (a -&gt; b -&gt; c) -&gt; HIO a -&gt; HIO b -&gt; HIO c
+forall (f :: * -&gt; *).
+Functor f
+-&gt; (forall a. a -&gt; f a)
+-&gt; (forall a b. f (a -&gt; b) -&gt; f a -&gt; f b)
+-&gt; (forall a b c. (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c)
+-&gt; (forall a b. f a -&gt; f b -&gt; f b)
+-&gt; (forall a b. f a -&gt; f b -&gt; f a)
+-&gt; Applicative f
+&lt;* :: HIO a -&gt; HIO b -&gt; HIO a
+$c&lt;* :: forall a b. HIO a -&gt; HIO b -&gt; HIO a
+*&gt; :: HIO a -&gt; HIO b -&gt; HIO b
+$c*&gt; :: forall a b. HIO a -&gt; HIO b -&gt; HIO b
+liftA2 :: (a -&gt; b -&gt; c) -&gt; HIO a -&gt; HIO b -&gt; HIO c
+$cliftA2 :: forall a b c. (a -&gt; b -&gt; c) -&gt; HIO a -&gt; HIO b -&gt; HIO c
+&lt;*&gt; :: HIO (a -&gt; b) -&gt; HIO a -&gt; HIO b
+$c&lt;*&gt; :: forall a b. HIO (a -&gt; b) -&gt; HIO a -&gt; HIO b
+pure :: a -&gt; HIO a
+$cpure :: forall a. a -&gt; HIO a
+$cp1Applicative :: Functor HIO
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Applicative</span></span></span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679092770"><span id="local-6989586621679092772"><span id="local-6989586621679092774"><span class="annot"><span class="annottext">Applicative HIO
+a -&gt; HIO a
+Applicative HIO
+-&gt; (forall a b. HIO a -&gt; (a -&gt; HIO b) -&gt; HIO b)
+-&gt; (forall a b. HIO a -&gt; HIO b -&gt; HIO b)
+-&gt; (forall a. a -&gt; HIO a)
+-&gt; Monad HIO
+HIO a -&gt; (a -&gt; HIO b) -&gt; HIO b
+HIO a -&gt; HIO b -&gt; HIO b
+forall a. a -&gt; HIO a
+forall a b. HIO a -&gt; HIO b -&gt; HIO b
+forall a b. HIO a -&gt; (a -&gt; HIO b) -&gt; HIO b
+forall (m :: * -&gt; *).
+Applicative m
+-&gt; (forall a b. m a -&gt; (a -&gt; m b) -&gt; m b)
+-&gt; (forall a b. m a -&gt; m b -&gt; m b)
+-&gt; (forall a. a -&gt; m a)
+-&gt; Monad m
+return :: a -&gt; HIO a
+$creturn :: forall a. a -&gt; HIO a
+&gt;&gt; :: HIO a -&gt; HIO b -&gt; HIO b
+$c&gt;&gt; :: forall a b. HIO a -&gt; HIO b -&gt; HIO b
+&gt;&gt;= :: HIO a -&gt; (a -&gt; HIO b) -&gt; HIO b
+$c&gt;&gt;= :: forall a b. HIO a -&gt; (a -&gt; HIO b) -&gt; HIO b
+$cp1Monad :: Applicative HIO
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Monad</span></span></span></span></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">via</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">ReaderT</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Set</span></span><span> </span><span class="annot"><a href="HW5.Action.html#HiPermission"><span class="hs-identifier hs-type">HiPermission</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span class="hs-special">)</span><span>
+</span><span id="line-46"></span><span>
+</span><span id="line-47"></span><span class="hs-comment">-- | Wraps context for HIO and computes the operation</span><span>
+</span><span id="line-48"></span><span class="annot"><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-type">runAction'</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="HW5.Action.html#HiPermission"><span class="hs-identifier hs-type">HiPermission</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="HW5.Action.html#HIO"><span class="hs-identifier hs-type">HIO</span></a></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-49"></span><span id="runAction%27"><span class="annot"><span class="annottext">runAction' :: Maybe HiPermission -&gt; IO HiValue -&gt; HIO HiValue
+</span><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-var hs-var">runAction'</span></a></span></span><span> </span><span id="local-6989586621679092766"><span class="annot"><span class="annottext">Maybe HiPermission
+</span><a href="#local-6989586621679092766"><span class="hs-identifier hs-var">perm</span></a></span></span><span> </span><span id="local-6989586621679092765"><span class="annot"><span class="annottext">IO HiValue
+</span><a href="#local-6989586621679092765"><span class="hs-identifier hs-var">func</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">(Set HiPermission -&gt; IO HiValue) -&gt; HIO HiValue
+forall a. (Set HiPermission -&gt; IO a) -&gt; HIO a
+</span><a href="HW5.Action.html#HIO"><span class="hs-identifier hs-var">HIO</span></a></span><span> </span><span class="annot"><span class="annottext">((Set HiPermission -&gt; IO HiValue) -&gt; HIO HiValue)
+-&gt; (Set HiPermission -&gt; IO HiValue) -&gt; HIO HiValue
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="hs-glyph">\</span><span id="local-6989586621679092764"><span class="annot"><span class="annottext">Set HiPermission
+</span><a href="#local-6989586621679092764"><span class="hs-identifier hs-var">s</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission
+</span><a href="#local-6989586621679092766"><span class="hs-identifier hs-var">perm</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-50"></span><span>                                     </span><span class="annot"><span class="annottext">Maybe HiPermission
+</span><span class="hs-identifier hs-var">Nothing</span></span><span>    </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">IO HiValue
+</span><a href="#local-6989586621679092765"><span class="hs-identifier hs-var">func</span></a></span><span>
+</span><span id="line-51"></span><span>                                     </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621679092763"><span class="annot"><span class="annottext">HiPermission
+</span><a href="#local-6989586621679092763"><span class="hs-identifier hs-var">perm'</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">HiPermission
+</span><a href="#local-6989586621679092763"><span class="hs-identifier hs-var">perm'</span></a></span><span> </span><span class="annot"><span class="annottext">HiPermission -&gt; Set HiPermission -&gt; Bool
+forall (t :: * -&gt; *) a. (Foldable t, Eq a) =&gt; a -&gt; t a -&gt; Bool
+</span><span class="hs-operator hs-var">`elem`</span></span><span> </span><span class="annot"><span class="annottext">Set HiPermission
+</span><a href="#local-6989586621679092764"><span class="hs-identifier hs-var">s</span></a></span><span>
+</span><span id="line-52"></span><span>                                                   </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">IO HiValue
+</span><a href="#local-6989586621679092765"><span class="hs-identifier hs-var">func</span></a></span><span>
+</span><span id="line-53"></span><span>                                                   </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">PermissionException -&gt; IO HiValue
+forall e a. Exception e =&gt; e -&gt; IO a
+</span><span class="hs-identifier hs-var">throwIO</span></span><span> </span><span class="annot"><span class="annottext">(PermissionException -&gt; IO HiValue)
+-&gt; PermissionException -&gt; IO HiValue
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">HiPermission -&gt; PermissionException
+</span><a href="HW5.Action.html#PermissionRequired"><span class="hs-identifier hs-var">PermissionRequired</span></a></span><span> </span><span class="annot"><span class="annottext">HiPermission
+</span><a href="#local-6989586621679092763"><span class="hs-identifier hs-var">perm'</span></a></span><span>
+</span><span id="line-54"></span><span>
+</span><span id="line-55"></span><span class="hs-comment">-- | HiMonad instances for each Action defined by the Hi language</span><span>
+</span><span id="line-56"></span><span class="hs-keyword">instance</span><span> </span><span class="annot"><a href="HW5.Base.html#HiMonad"><span class="hs-identifier hs-type">HiMonad</span></a></span><span> </span><span class="annot"><a href="HW5.Action.html#HIO"><span class="hs-identifier hs-type">HIO</span></a></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-57"></span><span>  </span><span class="annot"><a href="HW5.Base.html#runAction"><span class="hs-identifier hs-type">runAction</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="HW5.Base.html#HiAction"><span class="hs-identifier hs-type">HiAction</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="HW5.Action.html#HIO"><span class="hs-identifier hs-type">HIO</span></a></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-58"></span><span>  </span><span id="local-6989586621679092756"><span class="annot"><span class="annottext">runAction :: HiAction -&gt; HIO HiValue
+</span><a href="#local-6989586621679092756"><span class="hs-identifier hs-var hs-var hs-var hs-var">runAction</span></a></span></span><span> </span><span class="annot"><span class="annottext">HiAction
+</span><a href="HW5.Base.html#HiActionNow"><span class="hs-identifier hs-var">HiActionNow</span></a></span><span>              </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission -&gt; IO HiValue -&gt; HIO HiValue
+</span><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-var">runAction'</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HiPermission -&gt; Maybe HiPermission
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">HiPermission
+</span><a href="HW5.Action.html#AllowTime"><span class="hs-identifier hs-var">AllowTime</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">IO HiValue
+</span><a href="HW5.Action.html#now"><span class="hs-identifier hs-var">now</span></a></span><span>
+</span><span id="line-59"></span><span>  </span><span class="annot"><a href="HW5.Base.html#runAction"><span class="hs-identifier hs-var">runAction</span></a></span><span> </span><span class="annot"><span class="annottext">HiAction
+</span><a href="HW5.Base.html#HiActionCwd"><span class="hs-identifier hs-var">HiActionCwd</span></a></span><span>              </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission -&gt; IO HiValue -&gt; HIO HiValue
+</span><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-var">runAction'</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HiPermission -&gt; Maybe HiPermission
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">HiPermission
+</span><a href="HW5.Action.html#AllowRead"><span class="hs-identifier hs-var">AllowRead</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">IO HiValue
+</span><a href="HW5.Action.html#cwd"><span class="hs-identifier hs-var">cwd</span></a></span><span>
+</span><span id="line-60"></span><span>  </span><span class="annot"><a href="HW5.Base.html#runAction"><span class="hs-identifier hs-var">runAction</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="HW5.Base.html#HiActionMkDir"><span class="hs-identifier hs-type">HiActionMkDir</span></a></span><span> </span><span id="local-6989586621679092750"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092750"><span class="hs-identifier hs-var">fp</span></a></span></span><span class="hs-special">)</span><span>       </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission -&gt; IO HiValue -&gt; HIO HiValue
+</span><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-var">runAction'</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HiPermission -&gt; Maybe HiPermission
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">HiPermission
+</span><a href="HW5.Action.html#AllowWrite"><span class="hs-identifier hs-var">AllowWrite</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String -&gt; IO HiValue
+</span><a href="HW5.Action.html#mkdir"><span class="hs-identifier hs-var">mkdir</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092750"><span class="hs-identifier hs-var">fp</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-61"></span><span>  </span><span class="annot"><a href="HW5.Base.html#runAction"><span class="hs-identifier hs-var">runAction</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="HW5.Base.html#HiActionChDir"><span class="hs-identifier hs-type">HiActionChDir</span></a></span><span> </span><span id="local-6989586621679092747"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092747"><span class="hs-identifier hs-var">fp</span></a></span></span><span class="hs-special">)</span><span>       </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission -&gt; IO HiValue -&gt; HIO HiValue
+</span><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-var">runAction'</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HiPermission -&gt; Maybe HiPermission
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">HiPermission
+</span><a href="HW5.Action.html#AllowRead"><span class="hs-identifier hs-var">AllowRead</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String -&gt; IO HiValue
+</span><a href="HW5.Action.html#cd"><span class="hs-identifier hs-var">cd</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092747"><span class="hs-identifier hs-var">fp</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-62"></span><span>  </span><span class="annot"><a href="HW5.Base.html#runAction"><span class="hs-identifier hs-var">runAction</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="HW5.Base.html#HiActionRead"><span class="hs-identifier hs-type">HiActionRead</span></a></span><span> </span><span id="local-6989586621679092744"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092744"><span class="hs-identifier hs-var">fp</span></a></span></span><span class="hs-special">)</span><span>        </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission -&gt; IO HiValue -&gt; HIO HiValue
+</span><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-var">runAction'</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HiPermission -&gt; Maybe HiPermission
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">HiPermission
+</span><a href="HW5.Action.html#AllowRead"><span class="hs-identifier hs-var">AllowRead</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String -&gt; IO HiValue
+</span><a href="HW5.Action.html#read"><span class="hs-identifier hs-var">read</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092744"><span class="hs-identifier hs-var">fp</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-63"></span><span>  </span><span class="annot"><a href="HW5.Base.html#runAction"><span class="hs-identifier hs-var">runAction</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="HW5.Base.html#HiActionWrite"><span class="hs-identifier hs-type">HiActionWrite</span></a></span><span> </span><span id="local-6989586621679092741"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092741"><span class="hs-identifier hs-var">fp</span></a></span></span><span> </span><span id="local-6989586621679092740"><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621679092740"><span class="hs-identifier hs-var">bytes</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission -&gt; IO HiValue -&gt; HIO HiValue
+</span><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-var">runAction'</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HiPermission -&gt; Maybe HiPermission
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">HiPermission
+</span><a href="HW5.Action.html#AllowWrite"><span class="hs-identifier hs-var">AllowWrite</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String -&gt; ByteString -&gt; IO HiValue
+</span><a href="HW5.Action.html#write"><span class="hs-identifier hs-var">write</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092741"><span class="hs-identifier hs-var">fp</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621679092740"><span class="hs-identifier hs-var">bytes</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-64"></span><span>  </span><span class="annot"><a href="HW5.Base.html#runAction"><span class="hs-identifier hs-var">runAction</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="HW5.Base.html#HiActionEcho"><span class="hs-identifier hs-type">HiActionEcho</span></a></span><span> </span><span id="local-6989586621679092737"><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621679092737"><span class="hs-identifier hs-var">text</span></a></span></span><span class="hs-special">)</span><span>      </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission -&gt; IO HiValue -&gt; HIO HiValue
+</span><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-var">runAction'</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">HiPermission -&gt; Maybe HiPermission
+forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span> </span><span class="annot"><span class="annottext">HiPermission
+</span><a href="HW5.Action.html#AllowWrite"><span class="hs-identifier hs-var">AllowWrite</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; IO HiValue
+</span><a href="HW5.Action.html#echo"><span class="hs-identifier hs-var">echo</span></a></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621679092737"><span class="hs-identifier hs-var">text</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-65"></span><span>  </span><span class="annot"><a href="HW5.Base.html#runAction"><span class="hs-identifier hs-var">runAction</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="HW5.Base.html#HiActionRand"><span class="hs-identifier hs-type">HiActionRand</span></a></span><span> </span><span id="local-6989586621679092734"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092734"><span class="hs-identifier hs-var">l</span></a></span></span><span> </span><span id="local-6989586621679092733"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092733"><span class="hs-identifier hs-var">r</span></a></span></span><span class="hs-special">)</span><span>       </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission -&gt; IO HiValue -&gt; HIO HiValue
+</span><a href="HW5.Action.html#runAction%27"><span class="hs-identifier hs-var">runAction'</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe HiPermission
+forall a. Maybe a
+</span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="annot"><span class="annottext">(IO HiValue -&gt; HIO HiValue) -&gt; IO HiValue -&gt; HIO HiValue
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Int -&gt; IO HiValue
+</span><a href="HW5.Action.html#rand"><span class="hs-identifier hs-var">rand</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092734"><span class="hs-identifier hs-var">l</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092733"><span class="hs-identifier hs-var">r</span></a></span><span>
+</span><span id="line-66"></span><span>
+</span><span id="line-67"></span><span class="hs-comment">-- | Echo implementation just outputs the input to IO</span><span>
+</span><span id="line-68"></span><span class="annot"><a href="HW5.Action.html#echo"><span class="hs-identifier hs-type">echo</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Text</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-69"></span><span id="echo"><span class="annot"><span class="annottext">echo :: Text -&gt; IO HiValue
+</span><a href="HW5.Action.html#echo"><span class="hs-identifier hs-var hs-var">echo</span></a></span></span><span> </span><span id="local-6989586621679092731"><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621679092731"><span class="hs-identifier hs-var">text</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-70"></span><span>  </span><span class="annot"><span class="annottext">String -&gt; IO ()
+</span><span class="hs-identifier hs-var">putStrLn</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; IO ()) -&gt; String -&gt; IO ()
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Text -&gt; String
+</span><span class="hs-identifier hs-var">T.unpack</span></span><span> </span><span class="annot"><span class="annottext">Text
+</span><a href="#local-6989586621679092731"><span class="hs-identifier hs-var">text</span></a></span><span>
+</span><span id="line-71"></span><span>  </span><span class="annot"><span class="annottext">HiValue -&gt; IO HiValue
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">HiValue
+</span><a href="HW5.Base.html#HiValueNull"><span class="hs-identifier hs-var">HiValueNull</span></a></span><span>
+</span><span id="line-72"></span><span>
+</span><span id="line-73"></span><span class="hs-comment">-- | Random number in range action implementation</span><span>
+</span><span id="line-74"></span><span class="annot"><a href="HW5.Action.html#rand"><span class="hs-identifier hs-type">rand</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-75"></span><span id="rand"><span class="annot"><span class="annottext">rand :: Int -&gt; Int -&gt; IO HiValue
+</span><a href="HW5.Action.html#rand"><span class="hs-identifier hs-var hs-var">rand</span></a></span></span><span> </span><span id="local-6989586621679092727"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092727"><span class="hs-identifier hs-var">l</span></a></span></span><span> </span><span id="local-6989586621679092726"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092726"><span class="hs-identifier hs-var">r</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-76"></span><span>  </span><span id="local-6989586621679092725"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092725"><span class="hs-identifier hs-var">n</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">(StdGen -&gt; (Int, StdGen)) -&gt; IO Int
+forall (m :: * -&gt; *) a. MonadIO m =&gt; (StdGen -&gt; (a, StdGen)) -&gt; m a
+</span><span class="hs-identifier hs-var">getStdRandom</span></span><span> </span><span class="annot"><span class="annottext">((StdGen -&gt; (Int, StdGen)) -&gt; IO Int)
+-&gt; (StdGen -&gt; (Int, StdGen)) -&gt; IO Int
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">(Int, Int) -&gt; StdGen -&gt; (Int, StdGen)
+forall g a. (RandomGen g, UniformRange a) =&gt; (a, a) -&gt; g -&gt; (a, g)
+</span><span class="hs-identifier hs-var">uniformR</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092727"><span class="hs-identifier hs-var">l</span></a></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092726"><span class="hs-identifier hs-var">r</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-77"></span><span>  </span><span class="annot"><span class="annottext">HiValue -&gt; IO HiValue
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(HiValue -&gt; IO HiValue) -&gt; HiValue -&gt; IO HiValue
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Rational -&gt; HiValue
+</span><a href="HW5.Base.html#HiValueNumber"><span class="hs-identifier hs-var">HiValueNumber</span></a></span><span> </span><span class="annot"><span class="annottext">(Rational -&gt; HiValue) -&gt; Rational -&gt; HiValue
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; Rational
+forall a. Real a =&gt; a -&gt; Rational
+</span><span class="hs-identifier hs-var">toRational</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679092725"><span class="hs-identifier hs-var">n</span></a></span><span>
+</span><span id="line-78"></span><span>
+</span><span id="line-79"></span><span class="hs-comment">-- | outputs the current working directory to IO</span><span>
+</span><span id="line-80"></span><span class="annot"><a href="HW5.Action.html#cwd"><span class="hs-identifier hs-type">cwd</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-81"></span><span id="cwd"><span class="annot"><span class="annottext">cwd :: IO HiValue
+</span><a href="HW5.Action.html#cwd"><span class="hs-identifier hs-var hs-var">cwd</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Text -&gt; HiValue
+</span><a href="HW5.Base.html#HiValueString"><span class="hs-identifier hs-var">HiValueString</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; HiValue) -&gt; (String -&gt; Text) -&gt; String -&gt; HiValue
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; Text
+</span><span class="hs-identifier hs-var">T.pack</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; HiValue) -&gt; IO String -&gt; IO HiValue
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">IO String
+</span><span class="hs-identifier hs-var">getCurrentDirectory</span></span><span>
+</span><span id="line-82"></span><span>
+</span><span id="line-83"></span><span class="hs-comment">-- | Creates a directory, name of the directory is the argument</span><span>
+</span><span id="line-84"></span><span class="annot"><a href="HW5.Action.html#mkdir"><span class="hs-identifier hs-type">mkdir</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-85"></span><span id="mkdir"><span class="annot"><span class="annottext">mkdir :: String -&gt; IO HiValue
+</span><a href="HW5.Action.html#mkdir"><span class="hs-identifier hs-var hs-var">mkdir</span></a></span></span><span> </span><span id="local-6989586621679092715"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092715"><span class="hs-identifier hs-var">fp</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-86"></span><span>  </span><span class="annot"><span class="annottext">String -&gt; IO ()
+</span><span class="hs-identifier hs-var">createDirectory</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092715"><span class="hs-identifier hs-var">fp</span></a></span><span>
+</span><span id="line-87"></span><span>  </span><span class="annot"><span class="annottext">HiValue -&gt; IO HiValue
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">HiValue
+</span><a href="HW5.Base.html#HiValueNull"><span class="hs-identifier hs-var">HiValueNull</span></a></span><span>
+</span><span id="line-88"></span><span>
+</span><span id="line-89"></span><span class="hs-comment">-- | Changes directory to the one specified in the argument</span><span>
+</span><span id="line-90"></span><span class="annot"><a href="HW5.Action.html#cd"><span class="hs-identifier hs-type">cd</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-91"></span><span id="cd"><span class="annot"><span class="annottext">cd :: String -&gt; IO HiValue
+</span><a href="HW5.Action.html#cd"><span class="hs-identifier hs-var hs-var">cd</span></a></span></span><span> </span><span id="local-6989586621679092713"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092713"><span class="hs-identifier hs-var">fp</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-92"></span><span>  </span><span class="annot"><span class="annottext">String -&gt; IO ()
+</span><span class="hs-identifier hs-var">setCurrentDirectory</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092713"><span class="hs-identifier hs-var">fp</span></a></span><span>
+</span><span id="line-93"></span><span>  </span><span class="annot"><span class="annottext">HiValue -&gt; IO HiValue
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">HiValue
+</span><a href="HW5.Base.html#HiValueNull"><span class="hs-identifier hs-var">HiValueNull</span></a></span><span>
+</span><span id="line-94"></span><span>   </span><span>
+</span><span id="line-95"></span><span class="hs-comment">-- | Reads data from a called filePath </span><span>
+</span><span id="line-96"></span><span class="annot"><a href="HW5.Action.html#read"><span class="hs-identifier hs-type">read</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-97"></span><span id="read"><span class="annot"><span class="annottext">read :: String -&gt; IO HiValue
+</span><a href="HW5.Action.html#read"><span class="hs-identifier hs-var hs-var">read</span></a></span></span><span> </span><span id="local-6989586621679092711"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092711"><span class="hs-identifier hs-var">fp</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-98"></span><span>  </span><span id="local-6989586621679092710"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621679092710"><span class="hs-identifier hs-var">isFile</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">String -&gt; IO Bool
+</span><span class="hs-identifier hs-var">doesFileExist</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092711"><span class="hs-identifier hs-var">fp</span></a></span><span>
+</span><span id="line-99"></span><span>  </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621679092710"><span class="hs-identifier hs-var">isFile</span></a></span><span>
+</span><span id="line-100"></span><span>  </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; HiValue
+</span><a href="#local-6989586621679092708"><span class="hs-identifier hs-var">decodeUtf8Bytes</span></a></span><span> </span><span class="annot"><span class="annottext">(ByteString -&gt; HiValue) -&gt; IO ByteString -&gt; IO HiValue
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; IO ByteString
+</span><span class="hs-identifier hs-var">B.readFile</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092711"><span class="hs-identifier hs-var">fp</span></a></span><span>
+</span><span id="line-101"></span><span>  </span><span class="hs-keyword">else</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-102"></span><span>    </span><span id="local-6989586621679092706"><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679092706"><span class="hs-identifier hs-var">list</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">String -&gt; IO [String]
+</span><span class="hs-identifier hs-var">listDirectory</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092711"><span class="hs-identifier hs-var">fp</span></a></span><span>
+</span><span id="line-103"></span><span>    </span><span class="annot"><span class="annottext">HiValue -&gt; IO HiValue
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(HiValue -&gt; IO HiValue) -&gt; HiValue -&gt; IO HiValue
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">Seq HiValue -&gt; HiValue
+</span><a href="HW5.Base.html#HiValueList"><span class="hs-identifier hs-var">HiValueList</span></a></span><span> </span><span class="annot"><span class="annottext">(Seq HiValue -&gt; HiValue) -&gt; Seq HiValue -&gt; HiValue
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">[HiValue] -&gt; Seq HiValue
+forall a. [a] -&gt; Seq a
+</span><span class="hs-identifier hs-var">S.fromList</span></span><span> </span><span class="annot"><span class="annottext">([HiValue] -&gt; Seq HiValue) -&gt; [HiValue] -&gt; Seq HiValue
+forall a b. (a -&gt; b) -&gt; a -&gt; b
+</span><span class="hs-operator hs-var">$</span></span><span> </span><span class="annot"><span class="annottext">(String -&gt; HiValue) -&gt; [String] -&gt; [HiValue]
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-identifier hs-var">fmap</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; HiValue
+</span><a href="HW5.Base.html#HiValueString"><span class="hs-identifier hs-var">HiValueString</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; HiValue) -&gt; (String -&gt; Text) -&gt; String -&gt; HiValue
+forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
+</span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; Text
+</span><span class="hs-identifier hs-var">T.pack</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679092706"><span class="hs-identifier hs-var">list</span></a></span><span>
+</span><span id="line-104"></span><span>  </span><span class="hs-keyword">where</span><span>
+</span><span id="line-105"></span><span>    </span><span id="local-6989586621679092708"><span class="annot"><span class="annottext">decodeUtf8Bytes :: ByteString -&gt; HiValue
+</span><a href="#local-6989586621679092708"><span class="hs-identifier hs-var hs-var">decodeUtf8Bytes</span></a></span></span><span> </span><span id="local-6989586621679092702"><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621679092702"><span class="hs-identifier hs-var">bytes</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">HiValue -&gt; Either UnicodeException HiValue -&gt; HiValue
+forall b a. b -&gt; Either a b -&gt; b
+</span><span class="hs-identifier hs-var">fromRight</span></span><span> </span><span class="annot"><span class="annottext">HiValue
+</span><a href="HW5.Base.html#HiValueNull"><span class="hs-identifier hs-var">HiValueNull</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Text -&gt; HiValue
+</span><a href="HW5.Base.html#HiValueString"><span class="hs-identifier hs-var">HiValueString</span></a></span><span> </span><span class="annot"><span class="annottext">(Text -&gt; HiValue)
+-&gt; Either UnicodeException Text -&gt; Either UnicodeException HiValue
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">ByteString -&gt; Either UnicodeException Text
+</span><span class="hs-identifier hs-var">decodeUtf8'</span></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621679092702"><span class="hs-identifier hs-var">bytes</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-106"></span><span>
+</span><span id="line-107"></span><span class="hs-comment">-- | Writes data to a filepath</span><span>
+</span><span id="line-108"></span><span class="annot"><a href="HW5.Action.html#write"><span class="hs-identifier hs-type">write</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">B.ByteString</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-109"></span><span id="write"><span class="annot"><span class="annottext">write :: String -&gt; ByteString -&gt; IO HiValue
+</span><a href="HW5.Action.html#write"><span class="hs-identifier hs-var hs-var">write</span></a></span></span><span> </span><span id="local-6989586621679092699"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092699"><span class="hs-identifier hs-var">fp</span></a></span></span><span> </span><span id="local-6989586621679092698"><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621679092698"><span class="hs-identifier hs-var">bytes</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-110"></span><span>  </span><span class="annot"><span class="annottext">String -&gt; ByteString -&gt; IO ()
+</span><span class="hs-identifier hs-var">B.writeFile</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679092699"><span class="hs-identifier hs-var">fp</span></a></span><span> </span><span class="annot"><span class="annottext">ByteString
+</span><a href="#local-6989586621679092698"><span class="hs-identifier hs-var">bytes</span></a></span><span>
+</span><span id="line-111"></span><span>  </span><span class="annot"><span class="annottext">HiValue -&gt; IO HiValue
+forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">HiValue
+</span><a href="HW5.Base.html#HiValueNull"><span class="hs-identifier hs-var">HiValueNull</span></a></span><span>
+</span><span id="line-112"></span><span>
+</span><span id="line-113"></span><span class="hs-comment">-- | Returns current time</span><span>
+</span><span id="line-114"></span><span class="annot"><a href="HW5.Action.html#now"><span class="hs-identifier hs-type">now</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="HW5.Base.html#HiValue"><span class="hs-identifier hs-type">HiValue</span></a></span><span>
+</span><span id="line-115"></span><span id="now"><span class="annot"><span class="annottext">now :: IO HiValue
+</span><a href="HW5.Action.html#now"><span class="hs-identifier hs-var hs-var">now</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">UTCTime -&gt; HiValue
+</span><a href="HW5.Base.html#HiValueTime"><span class="hs-identifier hs-var">HiValueTime</span></a></span><span> </span><span class="annot"><span class="annottext">(UTCTime -&gt; HiValue) -&gt; IO UTCTime -&gt; IO HiValue
+forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">IO UTCTime
+</span><span class="hs-identifier hs-var">getCurrentTime</span></span><span>
+</span><span id="line-116"></span><span>
+</span><span id="line-117"></span></pre></body></html>

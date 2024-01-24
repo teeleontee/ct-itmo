@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">-- | This module contains the types from hw3 that are also</span><span>
+</span><span id="line-2"></span><span class="hs-comment">-- needed for hw4.</span><span>
+</span><span id="line-3"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">HW4.Types</span><span>
+</span><span id="line-4"></span><span>  </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="HW4.Types.html#Annotated"><span class="hs-identifier">Annotated</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-5"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW4.Types.html#Except"><span class="hs-identifier">Except</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-6"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW4.Types.html#Expr"><span class="hs-identifier">Expr</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-7"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW4.Types.html#Prim"><span class="hs-identifier">Prim</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-8"></span><span>  </span><span class="hs-special">,</span><span> </span><span class="annot"><a href="HW4.Types.html#State"><span class="hs-identifier">State</span></a></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><span id="line-9"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-10"></span><span>
+</span><span id="line-11"></span><span class="hs-keyword">data</span><span> </span><span id="Except"><span class="annot"><a href="HW4.Types.html#Except"><span class="hs-identifier hs-var">Except</span></a></span></span><span> </span><span id="local-6989586621679039771"><span class="annot"><a href="#local-6989586621679039771"><span class="hs-identifier hs-type">e</span></a></span></span><span> </span><span id="local-6989586621679039770"><span class="annot"><a href="#local-6989586621679039770"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Error"><span class="annot"><a href="HW4.Types.html#Error"><span class="hs-identifier hs-var">Error</span></a></span></span><span> </span><span class="annot"><a href="#local-6989586621679039771"><span class="hs-identifier hs-type">e</span></a></span><span> </span><span class="hs-glyph">|</span><span> </span><span id="Success"><span class="annot"><a href="HW4.Types.html#Success"><span class="hs-identifier hs-var">Success</span></a></span></span><span> </span><span class="annot"><a href="#local-6989586621679039770"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-12"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679039762"><span id="local-6989586621679039764"><span id="local-6989586621679039766"><span class="annot"><span class="annottext">Int -&gt; Except e a -&gt; ShowS
+[Except e a] -&gt; ShowS
+Except e a -&gt; String
+(Int -&gt; Except e a -&gt; ShowS)
+-&gt; (Except e a -&gt; String)
+-&gt; ([Except e a] -&gt; ShowS)
+-&gt; Show (Except e a)
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+forall e a. (Show e, Show a) =&gt; Int -&gt; Except e a -&gt; ShowS
+forall e a. (Show e, Show a) =&gt; [Except e a] -&gt; ShowS
+forall e a. (Show e, Show a) =&gt; Except e a -&gt; String
+showList :: [Except e a] -&gt; ShowS
+$cshowList :: forall e a. (Show e, Show a) =&gt; [Except e a] -&gt; ShowS
+show :: Except e a -&gt; String
+$cshow :: forall e a. (Show e, Show a) =&gt; Except e a -&gt; String
+showsPrec :: Int -&gt; Except e a -&gt; ShowS
+$cshowsPrec :: forall e a. (Show e, Show a) =&gt; Int -&gt; Except e a -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679039757"><span id="local-6989586621679039759"><span class="annot"><span class="annottext">Except e a -&gt; Except e a -&gt; Bool
+(Except e a -&gt; Except e a -&gt; Bool)
+-&gt; (Except e a -&gt; Except e a -&gt; Bool) -&gt; Eq (Except e a)
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+forall e a. (Eq e, Eq a) =&gt; Except e a -&gt; Except e a -&gt; Bool
+/= :: Except e a -&gt; Except e a -&gt; Bool
+$c/= :: forall e a. (Eq e, Eq a) =&gt; Except e a -&gt; Except e a -&gt; Bool
+== :: Except e a -&gt; Except e a -&gt; Bool
+$c== :: forall e a. (Eq e, Eq a) =&gt; Except e a -&gt; Except e a -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span> </span><span>
+</span><span id="line-13"></span><span>
+</span><span id="line-14"></span><span class="hs-keyword">data</span><span> </span><span id="Annotated"><span class="annot"><a href="HW4.Types.html#Annotated"><span class="hs-identifier hs-var">Annotated</span></a></span></span><span> </span><span id="local-6989586621679039755"><span class="annot"><a href="#local-6989586621679039755"><span class="hs-identifier hs-type">e</span></a></span></span><span> </span><span id="local-6989586621679039754"><span class="annot"><a href="#local-6989586621679039754"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><a href="#local-6989586621679039754"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span id="%3A%23"><span class="annot"><a href="HW4.Types.html#%3A%23"><span class="hs-operator hs-var">:#</span></a></span></span><span> </span><span class="annot"><a href="#local-6989586621679039755"><span class="hs-identifier hs-type">e</span></a></span><span>
+</span><span id="line-15"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679039747"><span id="local-6989586621679039749"><span id="local-6989586621679039751"><span class="annot"><span class="annottext">Int -&gt; Annotated e a -&gt; ShowS
+[Annotated e a] -&gt; ShowS
+Annotated e a -&gt; String
+(Int -&gt; Annotated e a -&gt; ShowS)
+-&gt; (Annotated e a -&gt; String)
+-&gt; ([Annotated e a] -&gt; ShowS)
+-&gt; Show (Annotated e a)
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+forall e a. (Show a, Show e) =&gt; Int -&gt; Annotated e a -&gt; ShowS
+forall e a. (Show a, Show e) =&gt; [Annotated e a] -&gt; ShowS
+forall e a. (Show a, Show e) =&gt; Annotated e a -&gt; String
+showList :: [Annotated e a] -&gt; ShowS
+$cshowList :: forall e a. (Show a, Show e) =&gt; [Annotated e a] -&gt; ShowS
+show :: Annotated e a -&gt; String
+$cshow :: forall e a. (Show a, Show e) =&gt; Annotated e a -&gt; String
+showsPrec :: Int -&gt; Annotated e a -&gt; ShowS
+$cshowsPrec :: forall e a. (Show a, Show e) =&gt; Int -&gt; Annotated e a -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679039743"><span id="local-6989586621679039745"><span class="annot"><span class="annottext">Annotated e a -&gt; Annotated e a -&gt; Bool
+(Annotated e a -&gt; Annotated e a -&gt; Bool)
+-&gt; (Annotated e a -&gt; Annotated e a -&gt; Bool) -&gt; Eq (Annotated e a)
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+forall e a. (Eq a, Eq e) =&gt; Annotated e a -&gt; Annotated e a -&gt; Bool
+/= :: Annotated e a -&gt; Annotated e a -&gt; Bool
+$c/= :: forall e a. (Eq a, Eq e) =&gt; Annotated e a -&gt; Annotated e a -&gt; Bool
+== :: Annotated e a -&gt; Annotated e a -&gt; Bool
+$c== :: forall e a. (Eq a, Eq e) =&gt; Annotated e a -&gt; Annotated e a -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-16"></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">newtype</span><span> </span><span id="State"><span class="annot"><a href="HW4.Types.html#State"><span class="hs-identifier hs-var">State</span></a></span></span><span> </span><span id="local-6989586621679039742"><span class="annot"><a href="#local-6989586621679039742"><span class="hs-identifier hs-type">s</span></a></span></span><span> </span><span id="local-6989586621679039741"><span class="annot"><a href="#local-6989586621679039741"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="S"><span class="annot"><a href="HW4.Types.html#S"><span class="hs-identifier hs-var">S</span></a></span></span><span> </span><span class="hs-special">{</span><span> </span><span id="runS"><span class="annot"><span class="annottext">State s a -&gt; s -&gt; Annotated s a
+</span><a href="HW4.Types.html#runS"><span class="hs-identifier hs-var hs-var">runS</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="#local-6989586621679039742"><span class="hs-identifier hs-type">s</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><a href="HW4.Types.html#Annotated"><span class="hs-identifier hs-type">Annotated</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679039742"><span class="hs-identifier hs-type">s</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679039741"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="hs-special">}</span><span> </span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">data</span><span> </span><span id="Prim"><span class="annot"><a href="HW4.Types.html#Prim"><span class="hs-identifier hs-var">Prim</span></a></span></span><span> </span><span id="local-6989586621679039773"><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-20"></span><span>    </span><span id="Add"><span class="annot"><a href="HW4.Types.html#Add"><span class="hs-identifier hs-var">Add</span></a></span></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-21"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Sub"><span class="annot"><a href="HW4.Types.html#Sub"><span class="hs-identifier hs-var">Sub</span></a></span></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-22"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Mul"><span class="annot"><a href="HW4.Types.html#Mul"><span class="hs-identifier hs-var">Mul</span></a></span></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-23"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Div"><span class="annot"><a href="HW4.Types.html#Div"><span class="hs-identifier hs-var">Div</span></a></span></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-24"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Abs"><span class="annot"><a href="HW4.Types.html#Abs"><span class="hs-identifier hs-var">Abs</span></a></span></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-25"></span><span>  </span><span class="hs-glyph">|</span><span> </span><span id="Sgn"><span class="annot"><a href="HW4.Types.html#Sgn"><span class="hs-identifier hs-var">Sgn</span></a></span></span><span> </span><span class="annot"><a href="#local-6989586621679039773"><span class="hs-identifier hs-type">a</span></a></span><span>
+</span><span id="line-26"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679039727"><span id="local-6989586621679039729"><span id="local-6989586621679039731"><span class="annot"><span class="annottext">Int -&gt; Prim a -&gt; ShowS
+[Prim a] -&gt; ShowS
+Prim a -&gt; String
+(Int -&gt; Prim a -&gt; ShowS)
+-&gt; (Prim a -&gt; String) -&gt; ([Prim a] -&gt; ShowS) -&gt; Show (Prim a)
+forall a. Show a =&gt; Int -&gt; Prim a -&gt; ShowS
+forall a. Show a =&gt; [Prim a] -&gt; ShowS
+forall a. Show a =&gt; Prim a -&gt; String
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Prim a] -&gt; ShowS
+$cshowList :: forall a. Show a =&gt; [Prim a] -&gt; ShowS
+show :: Prim a -&gt; String
+$cshow :: forall a. Show a =&gt; Prim a -&gt; String
+showsPrec :: Int -&gt; Prim a -&gt; ShowS
+$cshowsPrec :: forall a. Show a =&gt; Int -&gt; Prim a -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679039723"><span id="local-6989586621679039725"><span class="annot"><span class="annottext">Prim a -&gt; Prim a -&gt; Bool
+(Prim a -&gt; Prim a -&gt; Bool)
+-&gt; (Prim a -&gt; Prim a -&gt; Bool) -&gt; Eq (Prim a)
+forall a. Eq a =&gt; Prim a -&gt; Prim a -&gt; Bool
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Prim a -&gt; Prim a -&gt; Bool
+$c/= :: forall a. Eq a =&gt; Prim a -&gt; Prim a -&gt; Bool
+== :: Prim a -&gt; Prim a -&gt; Bool
+$c== :: forall a. Eq a =&gt; Prim a -&gt; Prim a -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-27"></span><span>
+</span><span id="line-28"></span><span class="hs-keyword">data</span><span> </span><span id="Expr"><span class="annot"><a href="HW4.Types.html#Expr"><span class="hs-identifier hs-var">Expr</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Val"><span class="annot"><a href="HW4.Types.html#Val"><span class="hs-identifier hs-var">Val</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">Double</span></span><span> </span><span class="hs-glyph">|</span><span> </span><span id="Op"><span class="annot"><a href="HW4.Types.html#Op"><span class="hs-identifier hs-var">Op</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="HW4.Types.html#Prim"><span class="hs-identifier hs-type">Prim</span></a></span><span> </span><span class="annot"><a href="HW4.Types.html#Expr"><span class="hs-identifier hs-type">Expr</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-29"></span><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679039715"><span id="local-6989586621679039717"><span id="local-6989586621679039719"><span class="annot"><span class="annottext">Int -&gt; Expr -&gt; ShowS
+[Expr] -&gt; ShowS
+Expr -&gt; String
+(Int -&gt; Expr -&gt; ShowS)
+-&gt; (Expr -&gt; String) -&gt; ([Expr] -&gt; ShowS) -&gt; Show Expr
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Expr] -&gt; ShowS
+$cshowList :: [Expr] -&gt; ShowS
+show :: Expr -&gt; String
+$cshow :: Expr -&gt; String
+showsPrec :: Int -&gt; Expr -&gt; ShowS
+$cshowsPrec :: Int -&gt; Expr -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679039711"><span id="local-6989586621679039713"><span class="annot"><span class="annottext">Expr -&gt; Expr -&gt; Bool
+(Expr -&gt; Expr -&gt; Bool) -&gt; (Expr -&gt; Expr -&gt; Bool) -&gt; Eq Expr
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Expr -&gt; Expr -&gt; Bool
+$c/= :: Expr -&gt; Expr -&gt; Bool
+== :: Expr -&gt; Expr -&gt; Bool
+$c== :: Expr -&gt; Expr -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-30"></span><span>
+</span><span id="line-31"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621679039706"><span class="annot"><span class="hs-identifier hs-type">Num</span></span><span> </span><span class="annot"><a href="HW4.Types.html#Expr"><span class="hs-identifier hs-type">Expr</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-32"></span><span>  </span><span id="local-6989586621679039701"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039701"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span id="local-6989586621679039700"><span class="annot"><span class="annottext">+ :: Expr -&gt; Expr -&gt; Expr
+</span><span class="hs-operator hs-var hs-var hs-var hs-var">+</span></span></span><span> </span><span id="local-6989586621679039698"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039698"><span class="hs-identifier hs-var">y</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Prim Expr -&gt; Expr
+</span><a href="HW4.Types.html#Op"><span class="hs-identifier hs-var">Op</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Expr -&gt; Expr -&gt; Prim Expr
+forall a. a -&gt; a -&gt; Prim a
+</span><a href="HW4.Types.html#Add"><span class="hs-identifier hs-var">Add</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039701"><span class="hs-identifier hs-var">x</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039698"><span class="hs-identifier hs-var">y</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-33"></span><span>  </span><span id="local-6989586621679039697"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039697"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span id="local-6989586621679039696"><span class="annot"><span class="annottext">- :: Expr -&gt; Expr -&gt; Expr
+</span><span class="hs-glyph hs-var hs-var hs-var hs-var">-</span></span></span><span> </span><span id="local-6989586621679039695"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039695"><span class="hs-identifier hs-var">y</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Prim Expr -&gt; Expr
+</span><a href="HW4.Types.html#Op"><span class="hs-identifier hs-var">Op</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Expr -&gt; Expr -&gt; Prim Expr
+forall a. a -&gt; a -&gt; Prim a
+</span><a href="HW4.Types.html#Sub"><span class="hs-identifier hs-var">Sub</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039697"><span class="hs-identifier hs-var">x</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039695"><span class="hs-identifier hs-var">y</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-34"></span><span>  </span><span id="local-6989586621679039694"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039694"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span id="local-6989586621679039693"><span class="annot"><span class="annottext">* :: Expr -&gt; Expr -&gt; Expr
+</span><span class="hs-operator hs-var hs-var hs-var hs-var">*</span></span></span><span> </span><span id="local-6989586621679039691"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039691"><span class="hs-identifier hs-var">y</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Prim Expr -&gt; Expr
+</span><a href="HW4.Types.html#Op"><span class="hs-identifier hs-var">Op</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Expr -&gt; Expr -&gt; Prim Expr
+forall a. a -&gt; a -&gt; Prim a
+</span><a href="HW4.Types.html#Mul"><span class="hs-identifier hs-var">Mul</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039694"><span class="hs-identifier hs-var">x</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039691"><span class="hs-identifier hs-var">y</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-35"></span><span>  </span><span id="local-6989586621679039690"><span class="annot"><span class="annottext">abs :: Expr -&gt; Expr
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">abs</span></span></span><span> </span><span id="local-6989586621679039688"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039688"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Prim Expr -&gt; Expr
+</span><a href="HW4.Types.html#Op"><span class="hs-identifier hs-var">Op</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Expr -&gt; Prim Expr
+forall a. a -&gt; Prim a
+</span><a href="HW4.Types.html#Abs"><span class="hs-identifier hs-var">Abs</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039688"><span class="hs-identifier hs-var">x</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-36"></span><span>  </span><span id="local-6989586621679039687"><span class="annot"><span class="annottext">signum :: Expr -&gt; Expr
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">signum</span></span></span><span> </span><span id="local-6989586621679039685"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039685"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Prim Expr -&gt; Expr
+</span><a href="HW4.Types.html#Op"><span class="hs-identifier hs-var">Op</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Expr -&gt; Prim Expr
+forall a. a -&gt; Prim a
+</span><a href="HW4.Types.html#Sgn"><span class="hs-identifier hs-var">Sgn</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039685"><span class="hs-identifier hs-var">x</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-37"></span><span>  </span><span id="local-6989586621679039684"><span class="annot"><span class="annottext">fromInteger :: Integer -&gt; Expr
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromInteger</span></span></span><span> </span><span id="local-6989586621679039683"><span class="annot"><span class="annottext">Integer
+</span><a href="#local-6989586621679039683"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; Expr
+</span><a href="HW4.Types.html#Val"><span class="hs-identifier hs-var">Val</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Integer -&gt; Double
+forall a. Num a =&gt; Integer -&gt; a
+</span><span class="hs-identifier hs-var">fromInteger</span></span><span> </span><span class="annot"><span class="annottext">Integer
+</span><a href="#local-6989586621679039683"><span class="hs-identifier hs-var">x</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-38"></span><span>
+</span><span id="line-39"></span><span class="hs-keyword">instance</span><span> </span><span id="local-6989586621679039679"><span class="annot"><span class="hs-identifier hs-type">Fractional</span></span><span> </span><span class="annot"><a href="HW4.Types.html#Expr"><span class="hs-identifier hs-type">Expr</span></a></span></span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-40"></span><span>  </span><span id="local-6989586621679039676"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039676"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span id="local-6989586621679039675"><span class="annot"><span class="annottext">/ :: Expr -&gt; Expr -&gt; Expr
+</span><span class="hs-operator hs-var hs-var hs-var hs-var">/</span></span></span><span> </span><span id="local-6989586621679039673"><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039673"><span class="hs-identifier hs-var">y</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Prim Expr -&gt; Expr
+</span><a href="HW4.Types.html#Op"><span class="hs-identifier hs-var">Op</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Expr -&gt; Expr -&gt; Prim Expr
+forall a. a -&gt; a -&gt; Prim a
+</span><a href="HW4.Types.html#Div"><span class="hs-identifier hs-var">Div</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039676"><span class="hs-identifier hs-var">x</span></a></span><span> </span><span class="annot"><span class="annottext">Expr
+</span><a href="#local-6989586621679039673"><span class="hs-identifier hs-var">y</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-41"></span><span>  </span><span id="local-6989586621679039672"><span class="annot"><span class="annottext">fromRational :: Rational -&gt; Expr
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var">fromRational</span></span></span><span> </span><span id="local-6989586621679039671"><span class="annot"><span class="annottext">Rational
+</span><a href="#local-6989586621679039671"><span class="hs-identifier hs-var">x</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Double -&gt; Expr
+</span><a href="HW4.Types.html#Val"><span class="hs-identifier hs-var">Val</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Rational -&gt; Double
+forall a. Fractional a =&gt; Rational -&gt; a
+</span><span class="hs-identifier hs-var">fromRational</span></span><span> </span><span class="annot"><span class="annottext">Rational
+</span><a href="#local-6989586621679039671"><span class="hs-identifier hs-var">x</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-42"></span></pre></body></html>
