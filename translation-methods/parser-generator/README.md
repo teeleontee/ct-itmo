@@ -1,7 +1,5 @@
 # LL(1) Parser Generator
 
--------
-
 You can find examples of how the grammar file should look like at `calc/calc.gr` and `pylambda/pyLambda.gr`.
 
 A sample from `pyLambda.gr`
