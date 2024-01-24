@@ -1,0 +1,40 @@
+# name: PyLambda
+# start: start
+
+start : LAMBDA param COLON expr11
+
+param : ID param2
+
+param2 : COMMA ID param2
+       | EPS
+
+expr11 : term11  expr22
+
+term11 : factor11 term22
+
+expr22 : PLUS term11 expr22
+       | MINUS term11 expr22
+       | EPS
+
+term22 : MUL factor11 term2
+       | DIV factor11 term2
+       | EPS
+
+factor11 : NUM
+         | ID
+         | LBRACE factor22
+
+factor22 : expr11 RBRACE
+         | start RBRACE LBRACE param RBRACE
+
+PLUS : "+"
+MINUS : "-"
+MUL : "*"
+DIV : "/"
+LBRACE : "("
+RBRACE : ")"
+COMMA : ","
+COLON : ":"
+LAMBDA : "lambda"
+NUM : @ [0-9]+ @
+ID : @ [a-z]+ @

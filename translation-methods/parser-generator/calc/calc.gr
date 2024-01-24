@@ -1,0 +1,33 @@
+# name: Calc
+# start: start
+
+start -> Int : expr { val exprVal = expr.attr!! } start2(exprVal) { it.attr = start2.attr }
+
+start2(acc: Int) -> Int : SHL expr { val res = acc shl expr.attr!! } start2(res) { it.attr = start2.attr }
+                        | SHR expr { val res = acc shr expr.attr!! } start2(res) { it.attr = start2.attr }
+                        | EPS { it.attr = acc }
+
+expr -> Int : term { val termVal = term.attr!! } expr2(termVal) { it.attr = expr2.attr }
+
+term -> Int : factor { val fact = factor.attr!! } term2(fact) {it.attr = term2.attr }
+
+expr2(acc: Int) -> Int : PLUS term { val res = acc + term.attr!! } expr2(res) { it.attr = expr2.attr }
+                       | MINUS term { val res = acc - term.attr!! } expr2(res) { it.attr = expr2.attr}
+                       | EPS { it.attr = acc }
+
+term2(acc: Int) -> Int : MUL factor { val res = acc * factor.attr!! } term2(res) { it.attr = term2.attr }
+                       | DIV factor { val res = acc / factor.attr!! } term2(res) { it.attr = term2.attr }
+                       | EPS { it.attr = acc }
+
+factor -> Int : { val res = NUM.value.toInt() } NUM { it.attr = res }
+              | LBRACE expr RBRACE { it.attr = expr.attr }
+
+NUM : @ [0-9]+ @
+SHL : "<<"
+SHR : ">>"
+PLUS : "+"
+MINUS : "-"
+MUL : "*"
+DIV : "/"
+LBRACE : "("
+RBRACE : ")"

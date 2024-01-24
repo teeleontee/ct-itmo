@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 #include <cmath>
 #include <vector>
-#include <complex>
 
 using namespace std;
 
@@ -16,8 +15,8 @@ struct complexNumber {
     }
 
     explicit complexNumber(double phi)
-        : real(cos(phi))
-        , img(sin(phi))
+		: real(cos(phi))
+		, img(sin(phi))
     {}
 
     [[nodiscard]] complexNumber conjugate() const {
@@ -27,7 +26,6 @@ struct complexNumber {
     [[nodiscard]] double normSquared() const {
         return real * real + img * img;
     }
-
 
     complexNumber operator+(const complexNumber& num) const {
         return {real + num.real, img + num.img};
@@ -39,7 +37,7 @@ struct complexNumber {
 
 
     complexNumber operator*(const complexNumber& num) const {
-        return {real * num.real - img * num.img, real * num.img + img * num.real};
+		return {real * num.real - img * num.img, real * num.img + img * num.real};
     }
 
     complexNumber operator*(const double& num) const {
@@ -53,7 +51,6 @@ struct complexNumber {
     complexNumber operator-(const double& num) const {
         return {real - num, img};
     }
-
 
     complexNumber operator/(const double& num) const {
         return {real / num, img / num};
@@ -212,6 +209,7 @@ int main() {
 
     auto a = convertToPolynomial(positive(n));
     auto b = convertToPolynomial(positive(m));
+    
 
     auto times = timesFFT(a, b);
     auto normalTimes = normalize(times);
